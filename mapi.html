@@ -1,0 +1,26 @@
+<html>
+<head>
+    <title>КАРТА ТОЧЕК ДОСТУПА</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link rel="stylesheet" href="style.css" type="text/css"/>
+    <link rel="stylesheet" type="text/css" href="https://yastatic.net/bootstrap/3.3.4/css/bootstrap.min.css">
+    <script src="https://api-maps.yandex.ru/2.1/?apikey=e47ca267-409d-4f76-b09a-2c71c39d6c14&lang=ru_RU" type="text/javascript"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="maps.js" type="text/javascript"></script>
+</head>
+<body>
+    
+            <label for="suggest">Укажите адрес точки</label>
+            <input type="text" id="suggest" value="Беларусь, Брест, ">
+            <button type="button" id="button">Показать на карте</button>
+            
+    <label for="latitude">Координаты, широта</label>
+            <input type="text" id="latitude">
+            
+    <label for="longitude">Координаты, долгота</label>
+            <input type="text" id="longitude">
+    
+    <div id="map" ></div>
+</body>
+
+</html>
