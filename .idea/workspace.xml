@@ -7,6 +7,9 @@
       <change beforePath="$PROJECT_DIR$/controller/PointController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controller/PointController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/info.php" beforeDir="false" afterPath="$PROJECT_DIR$/info.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/library/Wifi/Pager.php" beforeDir="false" afterPath="$PROJECT_DIR$/library/Wifi/Pager.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sessions/sess_kvgjufu9661de97kumvgfvccqr" beforeDir="false" afterPath="$PROJECT_DIR$/sessions/sess_kvgjufu9661de97kumvgfvccqr" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/js/maps-point-edit.js" beforeDir="false" afterPath="$PROJECT_DIR$/templates/js/maps-point-edit.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/template_point_edit_data.php" beforeDir="false" afterPath="$PROJECT_DIR$/templates/template_point_edit_data.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -97,7 +100,7 @@
       <workItem from="1570513932583" duration="5484000" />
       <workItem from="1570606269854" duration="14487000" />
       <workItem from="1570686554980" duration="15543000" />
-      <workItem from="1570776194172" duration="5852000" />
+      <workItem from="1570776194172" duration="6661000" />
     </task>
     <servers />
   </component>

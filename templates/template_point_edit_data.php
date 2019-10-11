@@ -113,7 +113,7 @@
                         <div class="form-group">
                             <div class ="input-group col-md-12">
                                 <label for="suggest">Адрес установки</label>
-                                <input type="text" class="form-control" name ="address" id="suggest" value = "{{point.address}}"required>
+                                <input type="text" class="form-control" name ="address" id="suggest" value = "{{point.address}}" required>
                             </div>
                             <button type="button" id="button-maps" >Показать на карте</button>
                         </div>
