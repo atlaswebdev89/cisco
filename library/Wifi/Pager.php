@@ -8,6 +8,7 @@ use mysql_xdevapi\Result;
 
 class Pager
 {
+
         protected $driver;
         protected $totalCount;
         protected $page;

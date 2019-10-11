@@ -14,6 +14,7 @@ class PointController extends DisplayController {
     }
     protected function getGallery() {
         return true;
+
     }
 
     //Проверка наличия точки с  указанным id в бд
