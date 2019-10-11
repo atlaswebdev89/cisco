@@ -2,14 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="20b29b6b-b9ce-4093-9cb6-422a72bc4480" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controller/PointController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controller/PointController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/info.php" beforeDir="false" afterPath="$PROJECT_DIR$/info.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/library/Wifi/Pager.php" beforeDir="false" afterPath="$PROJECT_DIR$/library/Wifi/Pager.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sessions/sess_kvgjufu9661de97kumvgfvccqr" beforeDir="false" afterPath="$PROJECT_DIR$/sessions/sess_kvgjufu9661de97kumvgfvccqr" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/js/maps-point-edit.js" beforeDir="false" afterPath="$PROJECT_DIR$/templates/js/maps-point-edit.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/template_point_edit_data.php" beforeDir="false" afterPath="$PROJECT_DIR$/templates/template_point_edit_data.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sessions/sess_orpo12g42mgif83aefu3li8v1j" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -100,7 +97,8 @@
       <workItem from="1570513932583" duration="5484000" />
       <workItem from="1570606269854" duration="14487000" />
       <workItem from="1570686554980" duration="15543000" />
-      <workItem from="1570776194172" duration="6661000" />
+      <workItem from="1570776194172" duration="8243000" />
+      <workItem from="1570798574399" duration="2440000" />
     </task>
     <servers />
   </component>
@@ -112,7 +110,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>

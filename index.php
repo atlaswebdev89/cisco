@@ -7,6 +7,11 @@ ini_set('display_errors', 1);
 //Время жизни сесии в секундах
 ini_set('session.gc_maxlifetime', 1440);
 
+//Включение лога ошибок и указания файла для записи. Работает при выключенно внутреннем обработчике Slim
+ini_set('log_errors', 'On');
+ini_set('error_log', '/var/log/php/php_errors.log');
+
+
 //Настройка планировщика удаления файлов сессий
 //Вероятность запуска GC при каждом запуске скрипта  - session.gc_probability / session.gc_divisor
 //По умолчанию - 1/100. Соответственно, если задать session.gc_probability = 0 GC не запустится никогда
@@ -29,6 +34,7 @@ Wifi\TimePage::start();
 $config = [
     'settings' => [
         'determineRouteBeforeAppMiddleware' => true,
+        //Подробнная инфа по ошибке
         'displayErrorDetails' => true,
         'debug' => true,
         'templates.path' => __DIR__.'/templates',
@@ -136,6 +142,10 @@ $container['notAllowedHandler'] = function ($container) {
             ->withHeader('Content-Type', 'text/html');
     };
 };
+
+// Отключение обработчика ошибок Slim и включение стандартного обработчика PHP
+//unset($app->getContainer()['errorHandler']);
+//unset($app->getContainer()['phpErrorHandler']);
 
 //Сессия таймаут
 $app->add('\Wifi\Middleware:timeout');
