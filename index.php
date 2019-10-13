@@ -135,13 +135,13 @@ $container['notFoundHandler'] = function ($container) {
     };
 };
 //Обработчик 405 ошибки
-$container['notAllowedHandler'] = function ($container) {
-    return function ($request, $response) use ($container) {
-        return $container->view->render($response, '404.php')
-            ->withStatus(404)
-            ->withHeader('Content-Type', 'text/html');
-    };
-};
+//$container['notAllowedHandler'] = function ($container) {
+//    return function ($request, $response) use ($container) {
+//        return $container->view->render($response, '404.php')
+//            ->withStatus(404)
+//            ->withHeader('Content-Type', 'text/html');
+//    };
+//};
 
 // Отключение обработчика ошибок Slim и включение стандартного обработчика PHP
 //unset($app->getContainer()['errorHandler']);
