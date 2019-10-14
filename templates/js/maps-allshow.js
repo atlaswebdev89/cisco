@@ -34,9 +34,7 @@ function init () {
                 iconColor: 'green',
                 iconGlyph: 'home',
                 iconGlyphColor: 'blue',
-                preset: 'islands#glyphIcon',
-                clusterCaption: (dataPoint[i].name),
-                balloonContentBody: dataPoint[i].ip +'<br>'+ dataPoint[i].ssid
+                preset: 'islands#glyphIcon'
             });
 
     }
