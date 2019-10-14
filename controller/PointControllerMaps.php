@@ -19,7 +19,7 @@ class PointControllerMaps extends PointController
         //Подключение необходимых скриптов
         $this->page_script = $this->getScripts();
         $this->dataPointAll = json_encode($this->getDataPoint());
-      //  print_r($this->dataPointAll);exit;
+        //print_r($this->dataPointAll);exit;
         $this->mainbar = $this->mainBar();
         parent::display($request, $response, $args);
     }
