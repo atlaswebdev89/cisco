@@ -18,6 +18,11 @@ class Router {
                 $this->get('/', '\Controller\IndexController:execute')->setName('home');
                 $this->get('/info[/]', '\Controller\IndexController:execute') ->setName('info');
                 $this->get('/denied[/]',  '\Controller\DeniedController:execute')->setName('denied');
+
+
+
+
+
                 //Группа маршрутов для точек доступа
                 $this->group('/point', function () {
                    $this->get('[/[page/{id}[/]]]',                  '\Controller\PointControllerShowAll:execute')   ->setName('points');
@@ -27,6 +32,7 @@ class Router {
                    $this->map(['GET', 'POST'], '/add[/]',           '\Controller\PointControllerAdd:execute')       ->setName('add_point');
                    $this->get('/edit/id/{id}',                      '\Controller\PointControllerEdit:execute')      ->setName('edit_point_show');
                    $this->post('/edit[/]',                          '\Controller\PointControllerEdit:edit')         ->setName('edit_point');
+                   $this->get('/maps[/]',                           '\Controller\PointControllerMaps:execute' )     ->setName('points_maps');
 
                 });
                 $this->group('/console', function () {
