@@ -27,15 +27,16 @@ function init () {
                         '<span>IP адресс - ' + dataPoint[i].ip + '</span>',
                         '</div>'
                     ].join(''),
-                clusterCaption: (dataPoint[i].name),
-                balloonContentBody: dataPoint[i].ip +'<br>'+ dataPoint[i].ssid
+                clusterCaption: (dataPoint[i].name)
             },
             {
 
                 iconColor: 'green',
                 iconGlyph: 'home',
                 iconGlyphColor: 'blue',
-                preset: 'islands#glyphIcon'
+                preset: 'islands#glyphIcon',
+                clusterCaption: (dataPoint[i].name),
+                balloonContentBody: dataPoint[i].ip +'<br>'+ dataPoint[i].ssid
             });
 
     }
