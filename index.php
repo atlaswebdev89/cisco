@@ -144,8 +144,8 @@ $container['notAllowedHandler'] = function ($container) {
 };
 
 // Отключение обработчика ошибок Slim и включение стандартного обработчика PHP
-//unset($app->getContainer()['errorHandler']);
-//unset($app->getContainer()['phpErrorHandler']);
+unset($app->getContainer()['errorHandler']);
+unset($app->getContainer()['phpErrorHandler']);
 
 //Сессия таймаут
 $app->add('\Wifi\Middleware:timeout');
