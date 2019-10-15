@@ -35,6 +35,7 @@ function init () {
                 iconGlyph: 'home',
                 iconGlyphColor: 'blue',
                 preset: 'islands#glyphIcon'
+
             });
 
     }
@@ -45,4 +46,12 @@ function init () {
 
     map.geoObjects.add(clusterer);
     clusterer.add(geoObjects);
+
+    var searchControl = new ymaps.control.SearchControl({
+        options: {
+            provider: 'yandex#search'
+        }
+    });
+
+   map.controls.add(searchControl);
 }

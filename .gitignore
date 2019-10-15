@@ -1,0 +1,4 @@
+/cache/*
+/nbproject
+.idea/
+/sessions/sess_*
