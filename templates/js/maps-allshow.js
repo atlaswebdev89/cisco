@@ -27,6 +27,7 @@ function init () {
                         '<span>IP адресс - ' + dataPoint[i].ip + '</span>',
                         '</div>'
                     ].join(''),
+                iconCaption: dataPoint[i].ssid,            
                 clusterCaption: (dataPoint[i].name)
             },
             {
