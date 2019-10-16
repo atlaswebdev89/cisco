@@ -65,19 +65,10 @@ class PointControllerShowAll extends PointController
     //Получить необходимые скрипы для отображения страницы
     protected function getScripts () {
         return [
-            '/js/point-del.js',
-            '/js/autocomplete.js',
-            'http://ajax.aspnetcdn.com/ajax/jquery.ui/1.10.3/jquery-ui.min.js'
+            '/js/point-del.js'
         ];
     }
 
-    //Получить необходимые стили для отображения страницы
-    protected function getStyles()
-    {
-        return [
-            'http://ajax.aspnetcdn.com/ajax/jquery.ui/1.10.3/themes/sunny/jquery-ui.css'
-        ];
-    }
     //Получение главного блока данных точек доступа
     protected function mainBar () {
         return $this->view->fetch('template_point_page.php',
