@@ -57,7 +57,7 @@ class PointControllerShowAll extends PointController
 
         //Подключение необходимых скриптов
         $this->page_script = $this->getScripts();
-
+        $this->page_style = $this->getStyles();
         $this->mainbar = $this->mainBar();
         parent::display($request, $response, $args);
     }
@@ -65,7 +65,17 @@ class PointControllerShowAll extends PointController
     //Получить необходимые скрипы для отображения страницы
     protected function getScripts () {
         return [
-            '/js/point-del.js'
+            '/js/point-del.js',
+            '/js/autocomplete.js',
+            'http://ajax.aspnetcdn.com/ajax/jquery.ui/1.10.3/jquery-ui.min.js'
+        ];
+    }
+
+    //Получить необходимые стили для отображения страницы
+    protected function getStyles()
+    {
+        return [
+            'http://ajax.aspnetcdn.com/ajax/jquery.ui/1.10.3/themes/sunny/jquery-ui.css'
         ];
     }
     //Получение главного блока данных точек доступа
