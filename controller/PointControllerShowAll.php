@@ -57,7 +57,7 @@ class PointControllerShowAll extends PointController
 
         //Подключение необходимых скриптов
         $this->page_script = $this->getScripts();
-        $this->page_style = $this->getStyles();
+
         $this->mainbar = $this->mainBar();
         parent::display($request, $response, $args);
     }
