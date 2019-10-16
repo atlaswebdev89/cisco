@@ -6,7 +6,13 @@
                <p class="compressed-box-50 mb-100 dark text-center" style="">
                    Добавить точку доступа<br>
                </p>
-                 <div class="col-md-12">
+
+               <style>
+                   .input-group {
+                      width: 100%;
+                   }
+               </style>
+
 
                       <form class="compressed-box-50 m-auto" method="POST">
 
@@ -128,7 +134,7 @@
 
                  </div>
            </div>
-          </div>
+
         </div>
        <div class="bg parallax-bg skrollable-after" data-top-bottom="transform:translate3d(0px, 25%, 0px)" data-bottom-top="transform:translate3d(0px, -25%, 0px)"></div>
 </header>

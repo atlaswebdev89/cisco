@@ -7,7 +7,7 @@
                    Данные точки Сisco<br>
                </p>
              
-             <div class="col-md-12">
+
 
                  {% if show_block_moderator %}
                      <div class="dark" style="text-align: right; margin-bottom: 10px;">
@@ -83,7 +83,6 @@
            
                 
            </div>
-          </div>
         </div>
        <div class="bg parallax-bg skrollable-after" data-top-bottom="transform:translate3d(0px, 25%, 0px)" data-bottom-top="transform:translate3d(0px, -25%, 0px)"></div>
 

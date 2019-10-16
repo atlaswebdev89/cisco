@@ -22,12 +22,10 @@
 
                 </style>
 
-
-                <div class="col-md-12">
                     <form>
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-3 col-xs-12 input-group">
-                                <span class="input-group-addon"><i class="icon-key2 icon-size-m"></i></span>
+                                <span class="input-group-addon"><i class="icon-spinner9"></i></span>
                                 <input type="search" class="form-control" id="search" placeholder="Введите ip точки">
                             </div>
                         </div>
@@ -37,22 +35,25 @@
                             </div>
                         </div>
                     </form>
-                </div>
+
 
                 {% for data in point %}
                     <div class="dark parent-block" style="color: #FFFFFF; font-size: 16px;">
                         <div class="col-md-12 col-xs-12 point-data" style="border: 1px solid silver; border-radius: 5px; margin: 5px; padding-bottom: 10px; padding-top: 10px;">
                             <div class="col-md-2">
-                                <div><i class="icon-podcast icon-position-left" ></i><a href="/point/show/id/{{data.id}}">{{data.ip}}</a></div>
+                                <div ><i class="icon-podcast icon-position-left" ></i><a href="/point/show/id/{{data.id}}" style="color: #3dff53" >{{data.ip}}</a></div>
                             </div>
                             <div class="col-md-4">
+                                <div><i class="icon-location22 icon-position-left" ></i>{{data.address}}</div>
+                            </div>
+                            <div class="col-md-2">
                                 <div><i class="icon-library3 icon-position-left"></i><a href="#">{{data.name}}</a></div>
                             </div>
-                            <div class="col-md-3">
-                                <span>{{ data.installation_date }}</span>
+                            <div class="col-md-2">
+                                <span>Активация: {{ data.installation_date }}</span>
 
                             </div>
-                            <div class="col-md-3">
+                            <div class="col-md-2">
                                 {% if show_block_moderator %}
                                     <a href="/point/edit/id/{{data.id}}"><i class="icon-hammer3 icon-position-left"></i></a>
                                         {% if show_block_admin %}

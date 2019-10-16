@@ -59,7 +59,7 @@ section#logindata {
     margin-bottom: 30px;
 }
 #redy {
-    margin-top:75px;
+    margin-top:40px;
 }
 .navbar-brand a {
     background-color: #5bc0de;
@@ -98,4 +98,7 @@ section#logindata {
     background-position: center;
     background-size: cover;
     opacity: 0.10;
+}
+.input-group {
+    width: 100%;
 }

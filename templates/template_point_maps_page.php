@@ -2,10 +2,9 @@
     <div class="container-fluid">
         <div class="row flex-md-vmiddle">
             <div class="col-md-12 pl" id="button" style="padding: 5px;">
-                <h2 class="dark text-center" style="" data-aos="zoom-in" data-aos-easing="none" data-aos-duration="500" data-aos-delay="0"><strong>Access Point</strong>&nbsp; CiscoWifi</h2>
-                <p class="compressed-box-50 mb-100 dark text-center" style="">
-                    Карта точек Cisco<br>
-                </p>
+                <h2 class="dark text-center" style="" data-aos="zoom-in" data-aos-easing="none" data-aos-duration="500" data-aos-delay="0">
+                    <strong>Access Point</strong>&nbsp; Maps
+                </h2>
                     <div id="map" class=""></div>
             </div>
         </div>
