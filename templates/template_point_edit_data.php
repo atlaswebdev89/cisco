@@ -8,7 +8,7 @@
                 </p>
                 <div class="col-md-12">
 
-                    <form class="compressed-box-50 m-auto" method="POST">
+                    <form class="compressed-box-50 m-auto point-redactor" method="POST">
                         {%for point in point_data %}
 
                         <div class="form-group">

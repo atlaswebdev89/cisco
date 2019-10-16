@@ -99,6 +99,6 @@ section#logindata {
     background-size: cover;
     opacity: 0.10;
 }
-.input-group {
+.point-redactor .input-group {
     width: 100%;
 }

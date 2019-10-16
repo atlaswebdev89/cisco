@@ -7,14 +7,7 @@
                    Добавить точку доступа<br>
                </p>
 
-               <style>
-                   .input-group {
-                      width: 100%;
-                   }
-               </style>
-
-
-                      <form class="compressed-box-50 m-auto" method="POST">
+                      <form class="compressed-box-50 m-auto point-redactor" method="POST">
 
                           <div class="form-group">
                                <select id = "form-point-add" class="form-control" name = "busines" required>
