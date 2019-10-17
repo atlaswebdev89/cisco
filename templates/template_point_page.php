@@ -22,8 +22,6 @@
 
                 </style>
 
-                
-
                     <form>
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-3 col-xs-12 input-group">
@@ -40,7 +38,7 @@
 
                 {% if message %}
                     <div class="col-md-12 pt-25" >
-                        <h3 class ="dark text-center" ><span style="color: #e4b9b9;">{{message}}</span></h3>
+                        <h2 class ="dark text-center" ><span style="color: #ffefef; font-family: 'Amatic SC', cursive !important;">{{message}}</span></h2>
                     </div>
                 {% endif %}
 

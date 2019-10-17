@@ -6,7 +6,7 @@
                 <p class="compressed-box-50 mb-100 dark text-center" style="">
                     Редактор точки доступа<br>
                 </p>
-                <div class="col-md-12">
+
 
                     <form class="compressed-box-50 m-auto point-redactor" method="POST">
                         {%for point in point_data %}
@@ -153,7 +153,7 @@
                         {%endfor%}
                     </form>
 
-                </div>
+
             </div>
         </div>
     </div>
