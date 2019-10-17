@@ -46,12 +46,12 @@
                         <div class="form-group">
                             <select class="form-control" title="Укажите тип точки" placeholder="тип точки" name = "type-point" required>
                                 <option  value = '' disabled="disabled">Тип точки</option>
-                                {% if point.type == 'internal' %}
-                                    <option selected="selected" value = "internal">Внутреняя</option>
-                                    <option value = "external">Внешняя</option>
-                                {% elseif point.type == 'external' %}
-                                    <option  value = "internal">Внутреняя</option>
-                                    <option selected="selected" value = "external">Внешняя</option>
+                                {% if point.type == 'Внутреняя' %}
+                                    <option selected="selected" value = "Внутреняя">Внутреняя</option>
+                                    <option value = "Внешняя">Внешняя</option>
+                                {% elseif point.type == 'Внешняя' %}
+                                    <option  value = "Внутреняя">Внутреняя</option>
+                                    <option selected="selected" value = "Внешняя">Внешняя</option>
                                 {% endif %}
                             </select>
                         </div>

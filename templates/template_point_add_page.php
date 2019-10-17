@@ -37,8 +37,8 @@
                           <div class="form-group">
                               <select class="form-control" title="Укажите тип точки" placeholder="тип точки" name = "type-point" required>
                                   <option selected="selected" value = '' disabled="disabled">Тип точки</option>
-                                  <option value = "internal">Внутреняя</option>
-                                  <option value = "external">Внешняя</option>
+                                  <option value = "Внутреняя">Внутреняя</option>
+                                  <option value = "Внешняя">Внешняя</option>
                               </select>
                            </div>
 
