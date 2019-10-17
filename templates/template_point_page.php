@@ -38,6 +38,12 @@
                         </div>
                     </form>
 
+                {% if message %}
+                    <div class="col-md-12 pt-25" >
+                        <h3 class ="dark text-center" ><span style="color: #e4b9b9;">{{message}}</span></h3>
+                    </div>
+                {% endif %}
+
 
                 {% for data in point %}
                     <div class="dark parent-block" style="color: #FFFFFF; font-size: 16px;">

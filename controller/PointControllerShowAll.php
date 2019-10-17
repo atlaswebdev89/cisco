@@ -6,6 +6,7 @@ class PointControllerShowAll extends PointController
 {
     protected $page;
     protected $dataPoint;
+    protected $messageEmpty;
 
     //Данные для пагинации
     protected $tablename = PREF."point_data";
@@ -41,9 +42,14 @@ class PointControllerShowAll extends PointController
         //Получение списка точек с учетом постраничной навигации
         $this->dataPoint =  $this->pager->getItems();
 
-        //Если страница пагинации пустая выдать 404 ошибку
-        if(!($this->dataPoint['items'])) {
+        //Если страница пагинации не первая и пустая выдать 404 ошибку
+        if(!($this->dataPoint['items']) && $this->page != 1) {
             throw new \Slim\Exception\NotFoundException($request, $response);
+        }
+
+        //Если страница пагинации  первая и пустая выдать message
+        if(!($this->dataPoint['items']) && $this->page = 1) {
+                $this->messageEmpty = "Точек нет в Базе Данных";
         }
 
         return $this->display($request, $response, $args);
@@ -77,7 +83,8 @@ class PointControllerShowAll extends PointController
                 'navigation'              => $this->dataPoint['navigation'],
                 'uri'                     => '/point/page/',
                 'show_block_admin'        => $this->showBlockadmin,
-                'show_block_moderator'    => $this->showBlockmoderator
+                'show_block_moderator'    => $this->showBlockmoderator,
+                'message'                 => $this->messageEmpty
             ]
         );
     }
