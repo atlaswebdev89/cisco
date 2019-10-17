@@ -7,5 +7,8 @@
 <script src="/js/custom.js"></script>
 <script src="/js/index.js"></script>
 
+<!-- Скрипт замены стандартного alert-->
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
 
 

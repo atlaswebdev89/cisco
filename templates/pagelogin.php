@@ -32,6 +32,8 @@
         <script src="/js/checkValidate.js"></script>
         <script src="/js/aos.js"></script>
         <script src="/js/index.js"></script>
+        <!-- Скрипт замены стандартного alert-->
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 </body>
 </html>

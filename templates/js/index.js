@@ -9,9 +9,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 	$('#logout_button').click(function (event) {
 		event.preventDefault();
-		if(confirm("Действительно хотите выйти?")){
-			ajaxdatasend($(this));
-		};
+		ConfirmSweet(ajaxdatasend, $(this));
 	})
 	function ajaxdatasend (button){
 		$.ajax ({
@@ -27,18 +25,28 @@ document.addEventListener('DOMContentLoaded', function() {
 			},
 			success:  function (data) {
 				if(data) {
-					//Если аутентификация прошла перенаправляем на страницу входа
 					if(data.status == true){
 						window.location.href = data.url;
 					}else if (data.status == false){
-						alert("Ошибка удаления. Попробуйте позже");
-						button.removeAttr('disabled');
-					}else if (data.status == 'NotFoundPoint'){
-						alert("Точки нет в БД");
+						swal("Ошибка", "Ошибка logout", "error");
 						button.removeAttr('disabled');
 					}
 				}
 			}
 		})
+	}
+	function ConfirmSweet(nameFunc, button) {
+		swal({
+			title: "Выйти",
+			text: "Вы точно хотите покинуть сайт?",
+			icon: "warning",
+			buttons: ["Остаться", "Выйти!"],
+			dangerMode: true,
+		})
+			.then((willDelete) => {
+				if (willDelete) {
+					nameFunc(button);
+				}
+			});
 	}
 });

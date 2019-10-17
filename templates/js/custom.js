@@ -129,7 +129,7 @@ $('#ip').blur (function() {
                             },
                             success:  function (data) {
                                 if(data) {
-                                    alert("Ip уже есть в базе");
+                                    swal("Ошибка", "Ip уже есть в базе", "error");
                                     input.val('');
                                 }}
                         })

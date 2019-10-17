@@ -1,27 +1,24 @@
-$(document).ready(function(){
+$(document).ready(function() {
     //Удаление по id ссылка в карточке точки wifi
     $('#point_del').click(function (event) {
         event.preventDefault();
-        if(confirm("Действительно хотите удалить точку?")){
-            var id = $(this).data("id-point");
-            ajaxdatasend($(this), id);
-        };
+        var id = $(this).data("id-point");
+        ConfirmSweet(ajaxdatasend, $(this), id);
+
     })
 
     //Удаление в общем списке без редиректа
     $('.point_del').click(function (event) {
         event.preventDefault();
-        if(confirm("Действительно хотите удалить точку?")){
-            var id = $(this).data("id-point");
-            ajaxPointDel($(this), id);
-        };
+        var id = $(this).data("id-point");
+        ConfirmSweet(ajaxPointDel, $(this), id);
     })
 
-    function ajaxdatasend (button, id){
-        $.ajax ({
+    function ajaxdatasend(button, id) {
+        $.ajax({
             type: 'POST',
-            url:'/point/delete',
-            data: {id:id},
+            url: '/point/delete',
+            data: {id: id},
             timeout: 5000,
             //Указывая тип json использовать функцию JSON.parse не надо будет ошибка
             dataType: "json",
@@ -29,20 +26,28 @@ $(document).ready(function(){
                 //Блокируем кнопку и элементы формы
                 button.attr('disabled', 'disabled');
             },
-            success:  function (data) {
+            success: function (data) {
                 if (data) {
                     //Если ошибки нет делаем перенаправление
                     if (data.status == true) {
-                        alert("Точка удалена");
-                        window.location.href = data.url;
+                        swal({
+                            title: "Good!",
+                            text: "Точка удалена",
+                            confirmButtonText: "OK"
+                        }).then((WillDelete) => {
+                            if (WillDelete == true || WillDelete == null) {
+                                window.location.href = data.url;
+                            }
+                        })
+
                         //Если доступ закрыт делаем перенаправление на страницу загрушку
                     } else if (data.status == 'denied') {
                         window.location.href = data.url;
                     } else if (data.status == false) {
-                        alert("Ошибка удаления. Попробуйте позже");
+                        swal("Ошибка", "Ошибка удаления. Попробуйте позже", "error");
                         button.removeAttr('disabled');
                     } else if (data.status == 'NotFoundPoint') {
-                        alert("Точки нет в БД");
+                        swal("Ошибка", "Точки нет в БД", "error");
                         button.removeAttr('disabled');
                     }
                 }
@@ -50,11 +55,11 @@ $(document).ready(function(){
         })
     }
 
-    function ajaxPointDel (button, id){
-        $.ajax ({
+    function ajaxPointDel(button, id) {
+        $.ajax({
             type: 'POST',
-            url:'/point/delete',
-            data: {id:id},
+            url: '/point/delete',
+            data: {id: id},
             timeout: 5000,
             //Указывая тип json использовать функцию JSON.parse не надо будет ошибка
             dataType: "json",
@@ -62,7 +67,7 @@ $(document).ready(function(){
                 //Блокируем кнопку и элементы формы
                 button.attr('disabled', 'disabled');
             },
-            success:  function (data) {
+            success: function (data) {
                 if (data) {
                     //Если ошибки нет делаем перенаправление
                     if (data.status == true) {
@@ -71,14 +76,29 @@ $(document).ready(function(){
                     } else if (data.status == 'denied') {
                         window.location.href = data.url;
                     } else if (data.status == false) {
-                        alert("Ошибка удаления. Попробуйте позже");
+                        swal("Ошибка", "Ошибка удаления. Попробуйте позже", "error");
                         button.removeAttr('disabled');
                     } else if (data.status == 'NotFoundPoint') {
-                        alert("Точки нет в БД");
+                        swal("Ошибка", "Точки нет в БД", "error");
                         button.removeAttr('disabled');
                     }
                 }
             }
         })
+    }
+
+    function ConfirmSweet(nameFunc, button, id) {
+        swal({
+            title: "Удалить точку?",
+            text: "Подтвертить удаление точки Cisco!",
+            icon: "warning",
+            buttons: ["Отменить", "Удалить!"],
+            dangerMode: true,
+        })
+            .then((willDelete) => {
+                if (willDelete) {
+                    nameFunc(button, id);
+                }
+            });
     }
 })
