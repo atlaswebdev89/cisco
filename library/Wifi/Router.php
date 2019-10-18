@@ -19,9 +19,9 @@ class Router {
                 $this->get('/info[/]', '\Controller\IndexController:execute') ->setName('info');
                 $this->get('/denied[/]',  '\Controller\DeniedController:execute')->setName('denied');
 
-
-
-
+                //Редактирование данных пользователя и смена пароля
+                $this->map(['GET', 'POST'], '/profileUser/',        '\Controller\ProfileUserController:execute') ->setName('profile_user');
+                $this->map(['GET', 'POST'], '/profileUserPass/',    '\Controller\ProfileUserControllerPass:execute') ->setName('profileUserPass');
 
                 //Группа маршрутов для точек доступа
                 $this->group('/point', function () {

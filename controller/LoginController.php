@@ -22,6 +22,8 @@ class LoginController extends DisplayController implements \Interfaces\Observabl
     protected $observers = [];
     protected $routerLogin;
     protected $routerHome;
+    protected $profileUser;
+    protected $profileUserPass;
     public    $messageError;
     public    $ipRequest;
 
@@ -35,9 +37,12 @@ class LoginController extends DisplayController implements \Interfaces\Observabl
         parent::__construct($container);
         $this->container = $container;
         $this->auth = $container->auth;
+
         $this->routerLogin = $this->container->router->pathFor('login');
         $this->routerHome = $this->container->router->pathFor('home');
         $this->routerAdd  = $this->container->router->pathFor('add_point');
+        $this->profileUser = $this->container->router->pathFor('profile_user');
+        $this->profileUserPass = $this->container->router->pathFor('profileUserPass');
         $this->registerObserver();
     }
     
@@ -73,6 +78,8 @@ class LoginController extends DisplayController implements \Interfaces\Observabl
                                                         [   
                                                             'routerLogin'           => $this->routerLogin,
                                                             'routerHome'            => $this->routerHome,
+                                                            'profileUser'           => $this->profileUser,
+                                                            'profileUserPass'       => $this->profileUserPass,
                                                             'routerAdd'             => $this->routerAdd, 
                                                             'session'               => $this->session
                                                         ]);       

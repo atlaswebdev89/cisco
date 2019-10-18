@@ -151,8 +151,6 @@ class PointControllerEdit extends PointController
         //Изменение данных точки в БД
         $this->model->editdatapointBd($data);
         return (int)$posts_data['id'];
-
-
     }
 
 

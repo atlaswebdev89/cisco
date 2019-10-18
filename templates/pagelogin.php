@@ -9,6 +9,7 @@
 		<link rel="stylesheet" href="/css/style.css" />
 		<link rel="stylesheet" href="/css/custom.css" />
 		<link rel="stylesheet" href="/css/index.css" />
+        <link rel="stylesheet" href="/css/bootstrap-formhelpers.min.css" />
                 <!--Фавикон-->
                 <link rel="icon" href="/images/favicon.ico" type="image/x-icon" />
 		<link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
@@ -18,10 +19,8 @@
     			<div class="container">
         			<h2 >Cisco Wifi</h2>
         			<h4 class="mb-50">{{header}}</h4>
-        			<div class="compressed-box-33"> 
-            			
+        			<div class="compressed-box-33">
                                         {{ mainbar | raw }}
-                        
         			</div>
     			</div>
                <div class="bg"></div>  
@@ -34,6 +33,7 @@
         <script src="/js/index.js"></script>
         <!-- Скрипт замены стандартного alert-->
         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+        <script src = "/js/bootstrap-formhelpers.min.js"></script>
 
 </body>
 </html>

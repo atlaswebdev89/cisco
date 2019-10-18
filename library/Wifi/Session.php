@@ -27,6 +27,7 @@ class Session {
                 $_SESSION['ip']                 =   $data['ipAddress'];
                 $_SESSION['user_agent']         =   md5($data['user_agent']); 
                 $_SESSION['phone']              =   $data['phone'];
+                $_SESSION['JobsDepartment']     =   $data['JobsDepartment'];
                 $_SESSION['time']               =   date("H:i:s");
                 $_SESSION['timeLogin']          =   date("H:i:s", $data['timelogin']);
                 $_SESSION['auth']               =   TRUE;

@@ -32,12 +32,25 @@ class Users {
                             'checkAgent'  =>       $AllDataUser['checkAgent'],
                             'sessionTime' =>       $AllDataUser['sessionTime'],
                             'phone'       =>       $AllDataUser['phone'],
+                            'JobsDepartment'    => $AllDataUser['JobsDepartment'],
                             'ipAddress'   =>       $request->getServerParam('REMOTE_ADDR'),
                             'user_agent'  =>       $request->getServerParam('HTTP_USER_AGENT'),
                             'sess'        =>       md5(microtime()),
                             'timelogin'   =>       time(), 
                             'menu'        =>       $this->id_menu($AllDataUser['id_role']) 
                          );       
+    }
+
+
+    public function UsersDataForEdit ($request, $id) {
+                    $AllDataUser = $this->model->getDataUser($id);
+                    $AllDataUser = $AllDataUser[0];
+                            return array (
+                                'name'              =>       $AllDataUser['name'],
+                                'secondname'        =>       $AllDataUser['secondname'],
+                                'phone'             =>       $AllDataUser['phone'],
+                                'JobsDepartment'    =>       $AllDataUser['JobsDepartment'],
+                            );
     }
     
 
