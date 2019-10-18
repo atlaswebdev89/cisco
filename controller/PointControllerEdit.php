@@ -50,7 +50,7 @@ class PointControllerEdit extends PointController
         $this->ip = ($this->pointData[0]['ip']);
         $this->businness = ($this->pointData[0]['name']);
 
-
+        $this->title .=  $this->ip;
         $this->page_script = $this->getScripts();
         $this->page_style = $this->getStyles();
         $this->mainbar = $this->mainBar();

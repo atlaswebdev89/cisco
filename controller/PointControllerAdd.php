@@ -30,6 +30,7 @@ class PointControllerAdd extends PointController {
           return $this->display($request, $response, $args);
     }
     protected function display($request, $response, $args) {
+            $this->title .= "NewPoint";
             $this->page_script = $this->getScripts();
             $this->page_style = $this->getStyles();
             $this->mainbar = $this->mainBar();
