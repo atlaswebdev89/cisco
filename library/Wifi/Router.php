@@ -20,7 +20,8 @@ class Router {
                 $this->get('/denied[/]',  '\Controller\DeniedController:execute')->setName('denied');
 
                 //Редактирование данных пользователя и смена пароля
-                $this->map(['GET', 'POST'], '/profileUser/',        '\Controller\ProfileUserController:execute') ->setName('profile_user');
+                $this->get('/profileUser' ,                         '\Controller\ProfileUsersShowController:execute') ->setName('profile_user_show');
+                $this->map(['GET', 'POST'], '/profileUserEdit/',    '\Controller\ProfileUserController:execute') ->setName('profile_user');
                 $this->map(['GET', 'POST'], '/profileUserPass/',    '\Controller\ProfileUserControllerPass:execute') ->setName('profileUserPass');
 
                 //Группа маршрутов для точек доступа

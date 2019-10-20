@@ -63,6 +63,7 @@ class AclUser {
         $not_denied = [
             'denied',
             'profileUser',
+            'profileUserEdit',
             'profileUserPass'
         ];
 

@@ -22,7 +22,7 @@ class ProfileUserControllerPass extends DisplayController
         //print_r($this->UserData); print_r($this->session); exit;
 
         $this->mainbar = $this->mainBar();
-        parent::display_login($request, $response, $args);
+        parent::display($request, $response, $args);
     }
 
     //Получение главного блока данных точки доступа

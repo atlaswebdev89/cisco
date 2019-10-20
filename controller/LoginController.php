@@ -88,7 +88,7 @@ class LoginController extends DisplayController implements \Interfaces\Observabl
     public function display($request, $response, $args, $tmpl = FALSE ) {
        $this->title = 'CiscoLogin';
        if ($tmpl == 'logout') {
-           $this->header = 'Добро пожаловать';
+           $this->header = 'Вы авторизованы на сайте';
        }
        
        $template = ($tmpl == 'logout') ? 'logout.php':'login.php';  

@@ -7,6 +7,9 @@ namespace Controller;
 class ProfileUserController extends DisplayController
 {
     protected $UserData;
+    
+    
+    
     public function execute ($request, $response, $args) {
         return $this->display($request, $response, $args);
     }
@@ -20,10 +23,10 @@ class ProfileUserController extends DisplayController
         $this->title .= "UserProfile";
         $this->header = "Редактирования данных профиля";
         $this->UserData = $this->container->users->UsersDataForEdit($request, $this->session['user_id']);
-        //print_r($this->UserData); print_r($this->session); exit;
+        $this->page_script = $this->getScripts();
 
         $this->mainbar = $this->mainBar();
-        parent::display_login($request, $response, $args);
+        parent::display($request, $response, $args);
     }
 
     //Получение главного блока данных точки доступа
@@ -35,6 +38,15 @@ class ProfileUserController extends DisplayController
             'JobsDepartment'                => $this->UserData['JobsDepartment'],
             'session'                       => $this->session,
             'header'                        => $this->header
+            
         ]);
     }
+    //Получить необходимые скрипы для отображения страницы
+    protected function getScripts () {
+        return [         
+            '/js/bootstrap-formhelpers.min.js'
+        ];
+    }
 }
+
+
