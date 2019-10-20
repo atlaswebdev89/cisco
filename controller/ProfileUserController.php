@@ -20,7 +20,7 @@ class ProfileUserController extends DisplayController
 
     public function display($request, $response, $args)
     {
-        $this->title .= "UserProfile";
+        $this->title .= "UserProfileEdit";
         $this->header = "Редактирования данных профиля";
         $this->UserData = $this->container->users->UsersDataForEdit($request, $this->session['user_id']);
         $this->page_script = $this->getScripts();
