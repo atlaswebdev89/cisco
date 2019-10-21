@@ -94,13 +94,17 @@ $(document).ready(function(){
     $('#passChangeUser').click(function() {   
         var newPass = $('#newpass').val();
         var RepPass = $('#newpassRep').val();
+<<<<<<< HEAD
         
+=======
+>>>>>>> c4a21cb81db26f0c71529dc0815ee9918a652f77
         //Проверяем совпадение паролей нового и подтверждение нового пароля 
         if (newPass != RepPass) {            
             $(this).parents('form').find('.response_order p, #response_order p').html('Несовпадение паролей');
             $(this).parents('form').find('.response_order p').css("color", "#ffffff").fadeIn("slow");
                 setTimeout(function() { $('.response_order p, #response_order p').fadeOut("slow"); }, 2000);
                 return false;
+<<<<<<< HEAD
         } 
         //Проверяем длину пароля
         if (newPass.length < 7 || RepPass.length<7) {
@@ -110,6 +114,9 @@ $(document).ready(function(){
                 return false;
         }
         
+=======
+        }
+>>>>>>> c4a21cb81db26f0c71529dc0815ee9918a652f77
             var formData = new FormData();
             $(this).parents('form').find('input').each(function()
             {
