@@ -67,4 +67,14 @@ class Users {
             }
         return $array ;  
     }
+    
+    //Получение данных пользавателя для входа в систему
+    public function getDataAuthUser ($id) {
+        return $this->model->getDataAuthUser($id);
+    }
+    
+    //Изменение пароля пользователя  
+    public function changePassUser ($id, $newpass) {
+        return $this->model->changePassUser($id, $newpass);
+    }
 }

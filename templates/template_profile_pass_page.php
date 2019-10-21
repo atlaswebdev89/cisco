@@ -27,7 +27,7 @@
                                 </div>
                             </div>
                            
-                            <input disabled="disabled" type="button" name="changePass" value ="изменить" class="btn btn-block btn-success " id="pass-edit-user">
+                            <input disabled="disabled" type="button" name="changePass" value ="изменить" class="btn btn-block btn-success " id="passChangeUser">
                             <div class="form-group response_order">
                                 <p style="text-align: center; display: none;"></p>
                             </div>
