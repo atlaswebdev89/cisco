@@ -18,7 +18,7 @@
                 <span class="icon-bar"></span>
             </button>
             <div class="navbar-brand">
-                <img src="/images/wifi-icon2.png"  alt="Your logo" class="dark" >
+                <a href="/" style="background-color: inherit !important;"><img src="/images/wifi-icon2.png"  alt="Your logo" class="dark" ></a>
                 <span><a href = "/profileUser" >{{session.name}} {{session.secondname}}</a></span>  
             </div>
         </div>

@@ -43,4 +43,11 @@ class Session {
         session_destroy();
     }
     
+    public function updatesessionDataUser (array $data) {    
+            $_SESSION['name'] = $data['name'];
+            $_SESSION['secondname'] = $data['secondname'];
+            $_SESSION['phone'] = $data['phone'];
+            $_SESSION['JobsDepartment'] = $data['JobsDepartment'];            
+    }
+    
 }

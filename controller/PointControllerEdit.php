@@ -147,7 +147,7 @@ class PointControllerEdit extends PointController
 
         //Добавлем в массив id точки, которую редактируем
         $data ['id'] =(int)$posts_data['id'];
-
+        
         //Изменение данных точки в БД
         $this->model->editdatapointBd($data);
         return (int)$posts_data['id'];

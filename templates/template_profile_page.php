@@ -23,7 +23,7 @@
 
                                 <div class="form-group">
                                     <div class ="input-group">
-                                        <input type="text" class="form-control bfh-phone" data-format="+375 (dd) ddd-dd-dd" value = "{{session.phone}}" required>
+                                        <input name = "phone" id = "phone" type="text" class="form-control bfh-phone" data-format="+375 (dd) ddd-dd-dd" value = "{{session.phone}}" required>
                                     </div>
                                 </div>
 
@@ -32,7 +32,7 @@
                                         <input type="text" placeholder="Структурное подразделение" class="form-control" id="JobsDepartment" name = "JobsDepartment"  value = "{{session.JobsDepartment}}"required>
                                     </div>
                                 </div>
-                                    <input type="button" name="add" value ="изменить" class="btn btn-block btn-success " id="button-edit-point">
+                                    <input type="button" name="editdataUser" value ="изменить" class="btn btn-block btn-success " id="editdataUser">
                                     <div class="form-group response_order">
                                             <p style="text-align: center; display: none;"></p>
                                     </div>
@@ -42,6 +42,10 @@
         </div>
     </div>
     <div class="bg parallax-bg skrollable-after" data-top-bottom="transform:translate3d(0px, 25%, 0px)" data-bottom-top="transform:translate3d(0px, -25%, 0px)"></div>
+    
+    <script>
+        var UserId = {{session.user_id}};
+    </script>
 </header>
 
  
