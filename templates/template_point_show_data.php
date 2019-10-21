@@ -9,14 +9,17 @@
              
 
 
-                 {% if show_block_moderator %}
+                 
                      <div class="dark" style="text-align: right; margin-bottom: 10px;">
-                         <a  class="btn btn-primary" href="{{edit}}">Изменить</a>
-                         {% if show_block_admin %}
-                                <button  class="btn btn-danger" id="point_del"  data-id-point = "{{id}}">Удалить</button>
+                         <input class="btn-info btn text-center" type="button" onclick="history.back();" value="Назад"/>
+                         {% if show_block_moderator %}
+                            <a  class="btn btn-primary" href="{{edit}}">Изменить</a>
+                                {% if show_block_admin %}
+                                       <button  class="btn btn-danger" id="point_del"  data-id-point = "{{id}}">Удалить</button>
+                                {% endif %}
                          {% endif %}
                      </div>
-                 {% endif %}
+                
 
                  <table class="table table-bordered table-inverse  table-responsive dark text-center">
                         <tbody>

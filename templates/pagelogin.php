@@ -18,7 +18,7 @@
 <section id="logindata" class="dark pt-125 pb-125 text-center">   
     			<div class="container">
         			<h2 >Cisco Wifi</h2>
-        			<h4 class="mb-50">{{header}}</h4>
+        			<h4>{{header}}</h4>
         			<div class="compressed-box-33">
                                         {{ mainbar | raw }}
         			</div>

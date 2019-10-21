@@ -6,6 +6,7 @@
                 <p class="compressed-box-50 mb-100 dark text-center" >
                     {{header}}<br>
                 </p>
+                    
                 <div class="dark text-center">
                     <h4>
                         <h3><span style="color: #3dff53;">{{session.name}}  {{session.secondname}} </span> </h3>
@@ -15,6 +16,7 @@
                             <span>Номер телефона {{session.phone}}</span><br/>
                             <span>Отдел {{session.JobsDepartment}}</span><br/><br/>
                                 <div class="compressed-box-33">
+                                    <input class="btn-info btn text-center" type="button" onclick="history.back();" value="Назад"/>
                                     <a href ="{{profileUser}}"  class="btn btn-block btn-success">ProfileUser</a>
                                     <a href ="{{profileUserPass}}"  class="btn btn-block btn-success">Изменить пароль</a>                                
                                 </div>

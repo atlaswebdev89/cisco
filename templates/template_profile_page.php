@@ -6,7 +6,8 @@
                 <p class="compressed-box-50 mb-100 dark text-center" >
                     {{header}}<br>
                 </p>
-                <div class="dark text-center compressed-box-50">                 
+                <div class="dark text-center compressed-box-50">  
+                    <input class="btn-info btn text-center" type="button" onclick="history.back();" value="Назад"/>
                        <form class=" m-auto point-redactor" method="POST">
                                 <div class="form-group ">
                                     <div class ="input-group">
