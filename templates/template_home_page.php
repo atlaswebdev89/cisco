@@ -8,7 +8,7 @@
                                             <div class="compressed-box-75 text-center dark">
                                                 <form action="/search/" method="post" class="contact_form form-inline form-flex" id="subscribe-field-discount-form">
                                                     <div class="form-group">
-                                                        <input id = "searchRequest" type="text" class="form-control" placeholder="поиск..." name="data" size="10">
+                                                        <input id = "searchRequest" type="text" class="form-control" placeholder="поиск..." name="searchRequest" size="10">
                                                     </div><button type="submit" class="btn btn-link"><span class="spr-option-textedit-link">Искать</span><i class="icon-position-right icon-arrow-right icon-size-m"></i></button>
                                                 </form>
                                             </div>
