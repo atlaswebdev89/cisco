@@ -8,34 +8,48 @@ class SearchController extends DisplayController
 {
     protected $dataRequest = 0;
     protected $messageEmpty;
+    protected $template;
+    protected $temp;
 
 
 
     public function execute ($request, $response, $args) {
         //Защита от повторной отправки данных формы при обновлении страницы (при получении данных делаем редирект на страницу поиска)
             //Получение POST запроса при поиске точки
-            if ($request->isPost()) {
-                //Получение строки введенной в поиск пользователем
-                    $posts_data = $request->getParsedBody();
-                    $_SESSION['requestDataSearch'] = $posts_data['searchRequest'];
-                return $response->withRedirect($uri = $request->getUri()->getpath());
-            }
-
-            if ($this->session['requestDataSearch']) {
-                if ($result = $this->searchDatainBD($this->session['requestDataSearch'])) {
-                    $this->dataRequest = $result;
+//            if ($request->isPost()) {
+//                //Получение строки введенной в поиск пользователем
+//                    $posts_data = $request->getParsedBody();
+//                    $_SESSION['requestDataSearch'] = $posts_data['searchRequest'];
+//                return $response->withRedirect($uri = $request->getUri()->getpath());
+//            }
+//
+//            if ($this->session['requestDataSearch']) {
+//                if ($result = $this->searchDatainBD($this->session['requestDataSearch'])) {
+//                    $this->dataRequest = $result;
+//                }
+//            }
+            //Поиск через метод GET
+            if($post_data = $request->getQueryParams()) {          
+                if ($result = $this->searchDatainBD($post_data['searchRequest'])) {
+                        $this->dataRequest = $result;
+                        //Получение необходимо шаблона для вывода результатов
+                                if ($this->temp) {
+                                    $this->getTemplateSearch($this->temp);                         
+                                }                     
+                }else {
+                    $this->template = 'template_search_page.php';
                 }
-            }
+        }
         return $this->display($request, $response, $args);
     }
+    
     protected function display($request, $response, $args) {
         //Формирование разрешения для отображения блоков в зависимости от роли
         $this->getBlockShowRole();
         //Подключение необходимых скриптов
         $this->page_script = $this->getScripts();
-
-        $this->title .= "Search";
-        $this->mainbar = $this->mainBar();
+        $this->title .= "Search";      
+        $this->mainbar = $this->mainBar($this->template);
         parent::display($request, $response, $args);
     }
     protected function getGallery() {
@@ -44,8 +58,8 @@ class SearchController extends DisplayController
     }
 
     //Получение главного блока данных точек доступа
-    protected function mainBar () {
-        return $this->view->fetch('template_search_page.php',
+    protected function mainBar ($template) {
+        return $this->view->fetch($template,
                 [
                         'point'                      => $this->dataRequest,
                         'uri'                       => '/point/page/',
@@ -62,9 +76,19 @@ class SearchController extends DisplayController
         ];
     }
     
-    protected function searchDatainBD ($data) {
+    protected function getTemplateSearch ($template) {
+                    switch ($template) {
+                        case 'ip':
+                            $this->template = 'template_search_page.php';
+                        case 'firma':
+                            $this->template = 'template_search_page.php';
+                    }
+        
+    }
+
+    protected function searchDatainBD ($data) {       
         $request = $this->clear_str($data);
-        $array = array ();
+        $array = array();      
         //Получаем все точки в бд
         $DataReturn = $this->model->getDataPoint();
         
@@ -77,21 +101,21 @@ class SearchController extends DisplayController
 
         //Проверяем полученные данные
         if ($array) {
+            $this->temp = 'ip';
             return $array;
         }else {
-            //Проверяем совпадения строки запроса с полем name
+            //Проверяем совпадения строки запроса с полем name (Организация заказчик)
             foreach ($DataReturn as $item) {
                 if (mb_stripos ($item['name'], $request) !== FALSE) {
-                   // echo "GOOD"; exit;
                     $array[] = $item;
                 }
             }
-
         }
         if ($array) {
+            $this->temp = 'firma';
             return $array;
-        }
-
-        
+        }else {           
+            $this->messageEmpty = "Нет совпадения";      
+        }       
     }
 }
