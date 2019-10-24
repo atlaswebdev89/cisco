@@ -11,8 +11,6 @@ class SearchController extends DisplayController
     protected $template;
     protected $temp;
 
-
-
     public function execute ($request, $response, $args) {
         //Защита от повторной отправки данных формы при обновлении страницы (при получении данных делаем редирект на страницу поиска)
             //Получение POST запроса при поиске точки
@@ -34,13 +32,17 @@ class SearchController extends DisplayController
                         $this->dataRequest = $result;
                         //Получение необходимо шаблона для вывода результатов
                                 if ($this->temp) {
-                                    $this->getTemplateSearch($this->temp);                         
+                                    $this->getTemplateSearch($this->temp);
                                 }                     
                 }else {
                     $this->template = 'template_search_page.php';
-                }
-        }
-        return $this->display($request, $response, $args);
+                        }
+
+        }   else {
+                $this->template = 'template_search_page.php';
+            }
+
+            return $this->display($request, $response, $args);
     }
     
     protected function display($request, $response, $args) {
@@ -80,10 +82,14 @@ class SearchController extends DisplayController
                     switch ($template) {
                         case 'ip':
                             $this->template = 'template_search_page.php';
+                            break;
                         case 'firma':
-                            $this->template = 'template_search_page.php';
+                            $this->template = 'template_search_businness_page.php';
+                            break;
+                        case 'ssid':
+                            $this->template = 'template_search_ssid_page.php';
+                            break;
                     }
-        
     }
 
     protected function searchDatainBD ($data) {       
@@ -114,7 +120,19 @@ class SearchController extends DisplayController
         if ($array) {
             $this->temp = 'firma';
             return $array;
-        }else {           
+        }else {
+            //Проверяем совпадения строки запроса с полем ssid (Название сети wifi)
+            foreach ($DataReturn as $item) {
+                if (mb_stripos($item['ssid'], $request) !== FALSE){
+                    $array[] = $item;
+                }
+            }
+        }
+
+        if ($array) {
+            $this->temp = 'ssid';
+            return $array;
+        } else {
             $this->messageEmpty = "Нет совпадения";      
         }       
     }

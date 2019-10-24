@@ -26,7 +26,7 @@
                     <div class="form-group">
                         <div class="col-md-6 col-md-offset-3 col-xs-12 input-group">
                             <span class="input-group-addon"><i class="icon-spinner9"></i></span>
-                            <input type="search" class="form-control" id="searchRequest" name="searchRequest" placeholder="Поиск...">
+                            <input id = "searchRequest" type="search" class="form-control" name="searchRequest" placeholder="Введите ip точки">
                         </div>
                     </div>
                     <div class="form-group">
@@ -47,7 +47,7 @@
                 <div class="dark parent-block" style="color: #FFFFFF; font-size: 16px;">
                     <div class="col-md-12 col-xs-12 point-data" style="border: 1px solid silver; border-radius: 5px; margin: 5px; padding-bottom: 10px; padding-top: 10px;">
                         <div class="col-md-2">
-                            <div ><i class="icon-podcast icon-position-left" ></i><a href="/point/show/id/{{data.id}}" style="color: #3dff53" >{{data.ip}}</a></div>
+                            <div ><i class="icon-podcast icon-position-left" ></i><a href="/point/show/id/{{data.id}}" style="color: #3dff53" >{{data.ssid}}</a></div>
                         </div>
                         <div class="col-md-4">
                             <div><i class="icon-location22 icon-position-left" ></i>{{data.address}}</div>
