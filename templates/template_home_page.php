@@ -15,7 +15,7 @@
                                                         <div class="col-md-4" id = "redy">
 
                                                                 <a href="/point/" class="btn-success btn btn-block btn-lg" style="" data-aos="fade-down" data-aos-easing="none" data-aos-duration="500" data-aos-delay="0" href="#"><i class="icon-wifi icon-position-left"></i><span style="">Point CiscoWifi</span></a>
-                                                                <a class="btn-success btn btn-block btn-lg" style="" data-aos="fade-right" data-aos-easing="none" data-aos-duration="500" data-aos-delay="0" href="#"><i class="icon-apartment icon-position-left"></i><span style="">Business</span></a>
+                                                                <a href ="/bussiness" class="btn-success btn btn-block btn-lg" style="" data-aos="fade-right" data-aos-easing="none" data-aos-duration="500" data-aos-delay="0" href="#"><i class="icon-apartment icon-position-left"></i><span style="">Business</span></a>
                                                             {% if show_block_admin %}
                                                                 <a href="/console/" class="btn-success btn btn-block btn-lg" style="" data-aos="fade-up" data-aos-easing="none" data-aos-duration="500" data-aos-delay="0" href="#"><i class="icon-desktop icon-position-left"></i><span style="">Console Manager</span></a>
                                                             {% endif %}

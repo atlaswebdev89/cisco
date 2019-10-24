@@ -24,8 +24,15 @@ class Router {
                 $this->map(['GET', 'POST'], '/profileUserEdit/',    '\Controller\ProfileUserController:execute')      ->setName('profile_user');
                 $this->map(['GET', 'POST'], '/profileUserPass/',    '\Controller\ProfileUserControllerPass:execute')  ->setName('profileUserPass');
 
+<<<<<<< Updated upstream
                 //Поиск
                 $this->map(['GET', 'POST'], '/search/',              '\Controller\SearchController:execute')->setName('search');
+=======
+                //Группа маршрутов для Организаций
+                $this->group ('/bussiness', function () {
+                   $this->get('[/[page/{id}[/]]]', '\Controller\BussinessControllerShowAll:execute') ->setName('bussiness');
+                });
+>>>>>>> Stashed changes
 
                 //Группа маршрутов для точек доступа
                 $this->group('/point', function () {
