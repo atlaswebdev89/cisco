@@ -16,7 +16,8 @@ class Pager
         protected $field;
         protected $tablename;
         protected $where;
-        protected $join;
+        protected $join = FALSE;
+        protected $group = FALSE;
 
         //Количество точек на одной странице пагинации, задается константой
         protected $post_number;

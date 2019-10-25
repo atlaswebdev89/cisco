@@ -4,7 +4,7 @@
             <div class="col-md-12" id="button">
                 <h2 class="dark text-center" data-aos="zoom-in" data-aos-easing="none" data-aos-duration="500" data-aos-delay="0"><strong>Access Point</strong>&nbsp; CiscoWifi</h2>
                 <p class="compressed-box-50 mb-100 dark text-center" >
-                    Список установленных точек доступа CiscoWifi<br>
+                    Список организаций CiscoWifi<br>
                 </p>
                 <style>
                     a:link {
@@ -19,22 +19,8 @@
                         background: #2f2e2ea3; /* Цвет фона под ссылкой */
                         box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
                     }
-
                 </style>
 
-                <form>
-                    <div class="form-group">
-                        <div class="col-md-6 col-md-offset-3 col-xs-12 input-group">
-                            <span class="input-group-addon"><i class="icon-spinner9"></i></span>
-                            <input type="search" class="form-control" id="search" placeholder="Введите ip точки">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="col-md-offset-5 col-md-4" >
-                            <button type="button" class="btn btn-default">Поиск</button>
-                        </div>
-                    </div>
-                </form>
 
                 {% if message %}
                 <div class="col-md-12 pt-25" >
@@ -43,22 +29,17 @@
                 {% endif %}
 
 
-                {% for data in point %}
+                {% for data in bussiness %}
                 <div class="dark parent-block" style="color: #FFFFFF; font-size: 16px;">
                     <div class="col-md-12 col-xs-12 point-data" style="border: 1px solid silver; border-radius: 5px; margin: 5px; padding-bottom: 10px; padding-top: 10px;">
-                        <div class="col-md-2">
-                            <div ><i class="icon-podcast icon-position-left" ></i><a href="/point/show/id/{{data.id}}" style="color: #3dff53" >{{data.ip}}</a></div>
+                        <div class="col-md-6">
+                            <div><i class="icon-library3 icon-position-left" ></i><a href="/bussiness/show/id/{{data.id}}" style="color: #3dff53" >{{data.name}}</a></div>
                         </div>
-                        <div class="col-md-4">
-                            <div><i class="icon-location22 icon-position-left" ></i>{{data.address}}</div>
-                        </div>
-                        <div class="col-md-2">
-                            <div><i class="icon-library3 icon-position-left"></i><a href="#">{{data.name}}</a></div>
-                        </div>
-                        <div class="col-md-2">
-                            <span>Активация: {{ data.installation_date }}</span>
 
+                        <div class="col-md-4">
+                            <div><i class="icon-podcast icon-position-left"></i><span>Точки: </span><a href="/bussiness/point/show/{{data.id}}" style="color: #3dff53" >{{data.point}}</a></div>
                         </div>
+
                         <div class="col-md-2">
                             {% if show_block_moderator %}
                             <a href="/point/edit/id/{{data.id}}"><i class="icon-hammer3 icon-position-left"></i></a>
