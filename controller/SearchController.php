@@ -157,7 +157,7 @@ class SearchController extends DisplayController
             $this->temp = 'ssid';
             return $array;
         }else {
-            //Проверяем совпадения строки запроса с полем ssid (Название сети wifi)
+            //Проверяем совпадения строки запроса с полем name (Название организации)
             $this->dataNameOrganizations=$this->model->getOrganizations();
             foreach ($this->dataNameOrganizations as $item) {
                 if (mb_stripos($item['name'], $request) !== FALSE){

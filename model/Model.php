@@ -536,7 +536,7 @@ public function getRolePermisions () {
             $type = "arraydata";
             $sql =  "SELECT `".PREF."business`.`id`, `".PREF."business`.`name`, "
             ." (SELECT COUNT(*) FROM `".PREF."point_data` WHERE `".PREF."point_data`.`id_business` = `".PREF."business`.`id`) as point  "
-            ." FROM `".PREF."business`";
+            ." FROM `".PREF."business` ORDER BY point DESC";
             $result =  $this->driver->query($sql, $type);
             return $result;
         }
