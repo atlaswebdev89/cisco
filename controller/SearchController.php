@@ -10,6 +10,14 @@ class SearchController extends DisplayController
     protected $messageEmpty;
     protected $template;
     protected $temp;
+    protected $dataNameOrganizations;
+    protected $pager;
+
+    public function __construct($container) {
+        parent::__construct($container);
+        //Объект класса пагинации
+        $this->pager = $container->pager;
+    }
 
     public function execute ($request, $response, $args) {
         //Защита от повторной отправки данных формы при обновлении страницы (при получении данных делаем редирект на страницу поиска)
@@ -110,27 +118,28 @@ class SearchController extends DisplayController
             $this->temp = 'ip';
             return $array;
         }else {
-            //Проверяем совпадения строки запроса с полем name (Организация заказчик)
+
+            //Проверяем совпадения строки запроса с полем ssid (Название сети wifi)
             foreach ($DataReturn as $item) {
-                if (mb_stripos ($item['name'], $request) !== FALSE) {
+                if (mb_stripos ($item['ssid'], $request) !== FALSE) {
+                    $array[] = $item;
+                }
+            }
+        }
+        if ($array) {
+            $this->temp = 'ssid';
+            return $array;
+        }else {
+            //Проверяем совпадения строки запроса с полем ssid (Название сети wifi)
+            $this->dataNameOrganizations=$this->model->getOrganizations();
+            foreach ($this->dataNameOrganizations as $item) {
+                if (mb_stripos($item['name'], $request) !== FALSE){
                     $array[] = $item;
                 }
             }
         }
         if ($array) {
             $this->temp = 'firma';
-            return $array;
-        }else {
-            //Проверяем совпадения строки запроса с полем ssid (Название сети wifi)
-            foreach ($DataReturn as $item) {
-                if (mb_stripos($item['ssid'], $request) !== FALSE){
-                    $array[] = $item;
-                }
-            }
-        }
-
-        if ($array) {
-            $this->temp = 'ssid';
             return $array;
         } else {
             $this->messageEmpty = "Нет совпадения";      
