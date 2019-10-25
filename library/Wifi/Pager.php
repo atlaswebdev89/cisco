@@ -34,6 +34,7 @@ class Pager
                 $this->fields        =  $data['fields'];
                 $this->tablename    =   $data['tablename'];
                 $this->join         =   $data['join'];
+                $this->where        =   $data['where'];
                 $this->order        =   $data['order'];
                 $this->post_number  =   $data['post_number'];
                 $this->number_link  =   $data['number_link'];

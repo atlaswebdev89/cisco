@@ -29,7 +29,8 @@ class BussinessControllerShowAll extends BussinessController
             'page'              => $this->page,
             'tablename'         => $this->tablename,
             'fields'            => " *, (SELECT COUNT(*) FROM `".PREF."point_data` WHERE `".PREF."point_data`.`id_business` = `".PREF."business`.`id`) as point",
-            'join'              => '',
+            'join'              => FALSE,
+            'where'             => FALSE,
             'order'             => " ORDER BY `point` DESC",
             'post_number'       => POST_NUMBER,
             'number_link'       => NUMBER_LINKS

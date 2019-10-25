@@ -37,7 +37,7 @@
                         </div>
 
                         <div class="col-md-4">
-                            <div><i class="icon-podcast icon-position-left"></i><span>Точки: </span><a href="/bussiness/point/show/{{data.id}}" style="color: #3dff53" >{{data.point}}</a></div>
+                            <div><i class="icon-podcast icon-position-left"></i><span>Точки: </span><a href="/bussiness/points/show/id/{{data.id}}" style="color: #3dff53" >{{data.point}}</a></div>
                         </div>
 
                         <div class="col-md-2">

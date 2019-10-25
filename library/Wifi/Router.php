@@ -30,8 +30,9 @@ class Router {
 
                 //Группа маршрутов для Организаций
                 $this->group ('/bussiness', function () {
-                   $this->get('[/[page/{id}[/]]]',                  '\Controller\BussinessControllerShowAll:execute') ->setName('bussiness');
-                   $this->post('/delete[/]',                        '\Controller\BussinessControllerDelete:execute')  ->setName('bussiness_delete');
+                   $this->get('[/[page/{id}[/]]]',                      '\Controller\BussinessControllerShowAll:execute') ->setName('bussiness');
+                   $this->post('/delete[/]',                            '\Controller\BussinessControllerDelete:execute')  ->setName('bussiness_delete');
+                   $this->get('/points/show/id/{id}[/[page/{page}[/]]]',   '\Controller\BussinessControllerShowPoint:execute')->setName('bussiness_point');
                 });
 
                 //Группа маршрутов для точек доступа
