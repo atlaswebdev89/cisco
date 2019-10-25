@@ -6,12 +6,14 @@ namespace Controller;
 
 class SearchController extends DisplayController
 {
+    protected $page;
     protected $dataRequest = 0;
     protected $messageEmpty;
     protected $template;
     protected $temp;
     protected $dataNameOrganizations;
     protected $pager;
+    protected $getParams;
 
     public function __construct($container) {
         parent::__construct($container);
@@ -34,8 +36,13 @@ class SearchController extends DisplayController
 //                    $this->dataRequest = $result;
 //                }
 //            }
+//            
+            $this->page = isset($args['id']) ? $args['id']:1;
+            
             //Поиск через метод GET
-            if($post_data = $request->getQueryParams()) {          
+            if($post_data = $request->getQueryParams()) { 
+                //Строка запроса для формирования правильных url  при переходе на страницы пагинации
+                $this->getParams = '/?searchRequest='.$post_data['searchRequest'];
                 if ($result = $this->searchDatainBD($post_data['searchRequest'])) {
                         $this->dataRequest = $result;
                         //Получение необходимо шаблона для вывода результатов
@@ -48,6 +55,24 @@ class SearchController extends DisplayController
 
         }   else {
                 $this->template = 'template_search_page.php';
+            }
+            
+            if($this->dataRequest){
+                $this->pager->setDataArray (
+                        [
+                            'data'              => $this->dataRequest,
+                            'page'              => $this->page,
+                            'post_number'       => POST_NUMBER,
+                            'number_link'       => NUMBER_LINKS
+                        ]);
+               //Получение результатов поиска с учетом пагинации
+               $this->dataRequest = $this->pager->getItemsArrayData ();
+              
+            }
+            
+            //Если страница пагинации не первая и пустая выдать 404 ошибку
+            if(!($this->dataRequest['items']) && $this->page != 1) {
+                throw new \Slim\Exception\NotFoundException($request, $response);
             }
 
             return $this->display($request, $response, $args);
@@ -71,8 +96,10 @@ class SearchController extends DisplayController
     protected function mainBar ($template) {
         return $this->view->fetch($template,
                 [
-                        'point'                      => $this->dataRequest,
-                        'uri'                       => '/point/page/',
+                        'point'                     => $this->dataRequest['items'],
+                        'navigation'                => $this->dataRequest['navigation'],
+                        'getRequest'                => $this->getParams,
+                        'uri'                       => '/search/page/',
                         'show_block_admin'          => $this->showBlockadmin,
                         'show_block_moderator'      => $this->showBlockmoderator,
                         'message'                   => $this->messageEmpty

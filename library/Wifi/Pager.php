@@ -12,7 +12,7 @@ class Pager
         protected $driver;
         protected $totalCount;
         protected $page;
-
+        protected $dataArray;
         protected $field;
         protected $tablename;
         protected $where;
@@ -38,6 +38,32 @@ class Pager
                 $this->post_number  =   $data['post_number'];
                 $this->number_link  =   $data['number_link'];
         }
+        
+        public function setDataArray (array $data) {
+                $this->page         =   $data['page'];              
+                $this->post_number  =   $data['post_number'];
+                $this->number_link  =   $data['number_link'];
+                $this->dataArray    =   $data['data'];
+        }
+        
+        public function get_total_array() {
+            $this->totalCount = count($this->dataArray);
+        }
+        
+        public function getItemArray () {
+            
+             //Общее количество результатов поиска
+            $total_post = $this->get_total_array();
+            //Количество страниц пагинации для отображения всех точек
+            $number_pages =(int)($total_post/$this->post_number);
+            
+            if (($total_post%$this->post_number)!= 0) {
+                $number_pages++;
+            }
+            
+            $start = ($this->page-1)*$this->post_number;
+            return $result = array_slice($this->dataArray, $start, $this->post_number );
+        }
 
         //Функция получения общего количества точек доступа, с учетом условия
         public function get_total () {
@@ -45,8 +71,6 @@ class Pager
             if($this->totalCount) {
                 return $this->totalCount;
             }
-
-
 
             $sql ="SELECT COUNT(*) as count FROM ". $this->tablename;
             if ($this->where) {
@@ -148,5 +172,12 @@ class Pager
            return $result;
 
 
+        }
+        
+        public function getItemsArrayData () {
+                $result =array ();
+                $result['items'] = $this->getItemArray();
+                $result['navigation'] = $this->get_navigation();
+           return $result; 
         }
 }

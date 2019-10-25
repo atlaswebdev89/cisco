@@ -9,6 +9,8 @@ class BussinessControllerShowAll extends BussinessController
 
     protected $page;
     protected $dataBussiness;
+    protected $messageEmpty;
+    
 
     //Данные для пагинации
     protected $tablename = PREF."business";
@@ -65,7 +67,7 @@ class BussinessControllerShowAll extends BussinessController
         return $this->view->fetch('template_bussiness_showAll.php',
             [
                 'bussiness'               => $this->dataBussiness['items'],
-                'navigation'              => $this->dataBussiness['navigation'],
+                'navigation'              => $this->dataBussiness['navigation'],               
                 'uri'                     => '/bussiness/page/',
                 'show_block_admin'        => $this->showBlockadmin,
                 'show_block_moderator'    => $this->showBlockmoderator,

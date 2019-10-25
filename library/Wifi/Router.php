@@ -26,7 +26,7 @@ class Router {
 
 
                 //Поиск
-                $this->map(['GET', 'POST'], '/search/',              '\Controller\SearchController:execute')->setName('search');
+                $this->map(['GET', 'POST'], '/search/[page/{id}[/]]',              '\Controller\SearchController:execute')->setName('search');
 
                 //Группа маршрутов для Организаций
                 $this->group ('/bussiness', function () {

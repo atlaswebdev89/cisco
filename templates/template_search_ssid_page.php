@@ -26,7 +26,7 @@
                     <div class="form-group">
                         <div class="col-md-6 col-md-offset-3 col-xs-12 input-group">
                             <span class="input-group-addon"><i class="icon-spinner9"></i></span>
-                            <input id = "searchRequest" type="search" class="form-control" name="searchRequest" placeholder="Введите ip точки">
+                            <input id = "searchRequest" type="search" class="form-control" name="searchRequest" placeholder="Поиск...">
                         </div>
                     </div>
                     <div class="form-group">
@@ -75,41 +75,41 @@
 
         </div>
 
-        {% if navigation %}
+         {% if navigation %}
         <div class="row ">
             <div class="col-md-12">
                 <nav class="text-center">
                     <ul class="pagination text-center  justify-content-center">
                         {% if navigation.first %}
-                        <li><a href="{{uri}}{{navigation.first}}">start</a></li>
+                        <li><a href="{{uri}}{{navigation.first}}{{getRequest}}">start</a></li>
                         {% endif %}
 
                         {% if navigation.last_page %}
-                        <li><a href="{{uri}}{{navigation.last_page}}"> < </a></li>
+                        <li><a href="{{uri}}{{navigation.last_page}}{{getRequest}}"> < </a></li>
                         {% endif %}
 
                         {% if navigation.previous %}
                         {% for data in navigation.previous %}
-                        <li><a href="{{uri}}{{data}}"> {{data}} </a></li>
+                        <li><a href="{{uri}}{{data}}{{getRequest}}"> {{data}} </a></li>
                         {% endfor %}
                         {% endif %}
 
                         {% if navigation.current %}
-                        <li class="active"><a href="{{uri}}{{navigation.current}}"> {{navigation.current}} </a></li>
+                        <li class="active"><a href="{{uri}}{{navigation.current}}{{getRequest}}"> {{navigation.current}} </a></li>
                         {% endif %}
 
                         {% if navigation.next %}
                         {% for data in navigation.next %}
-                        <li><a href="{{uri}}{{data}}"> {{data}} </a></li>
+                        <li><a href="{{uri}}{{data}}{{getRequest}}"> {{data}} </a></li>
                         {% endfor %}
                         {% endif %}
 
                         {% if navigation.next_pages %}
-                        <li><a href="{{uri}}{{navigation.next_pages}}"> > </a></li>
+                        <li><a href="{{uri}}{{navigation.next_pages}}{{getRequest}}"> > </a></li>
                         {% endif %}
 
                         {% if navigation.end %}
-                        <li><a href="{{uri}}{{navigation.end}}">End</a></li>
+                        <li><a href="{{uri}}{{navigation.end}}{{getRequest}}">End</a></li>
                         {% endif %}
                     </ul>
                 </nav>
