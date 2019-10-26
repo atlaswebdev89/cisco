@@ -4,7 +4,7 @@
 namespace Controller;
 
 
-class BussinessControllerShow extends DisplayController
+class BussinessControllerShow extends BussinessController
 {
 
 }

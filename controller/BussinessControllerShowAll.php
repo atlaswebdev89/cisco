@@ -58,8 +58,18 @@ class BussinessControllerShowAll extends BussinessController
         //Формирование разрешения для отображения блоков в зависимости от роли
         $this->getBlockShowRole();
 
+        //Подключение необходимых скриптов
+        $this->page_script = $this->getScripts();
+
         $this->mainbar = $this->mainBar();
         parent::display($request, $response, $args);
+    }
+
+    //Получить необходимые скрипы для отображения страницы
+    protected function getScripts () {
+        return [
+            '/js/bussiness-del.js'
+        ];
     }
 
 
