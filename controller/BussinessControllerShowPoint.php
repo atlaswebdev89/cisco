@@ -71,7 +71,7 @@ class BussinessControllerShowPoint extends BussinessController{
     }
     protected function display($request, $response, $args) {
 
-        $this->title .= 'AccessPointBus';
+        $this->title .= 'AccessPointBussiness';
 
         //Формирование разрешения для отображения блоков в зависимости от роли
         $this->getBlockShowRole();

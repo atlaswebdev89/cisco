@@ -57,7 +57,7 @@ $(document).ready(function(){
                 if(data) {
                     //Если данные измененны делаем редирект
                     if(data.status == true){
-                        window.location.href = data.url;
+                        history.back();
                     }
                     //Очистка формы
                     form[0].reset();

@@ -56,9 +56,9 @@
 
                         <div class="col-md-2">
                             {% if show_block_moderator %}
-                            <a href="/point/edit/id/{{data.id}}"><i class="icon-hammer3 icon-position-left"></i></a>
+                            <a href="/bussiness/edit/id/{{data.id}}"><i class="icon-hammer3 icon-position-left"></i></a>
                             {% if show_block_admin %}
-                            <a class="point_del"  data-id-point = "{{data.id}}"><i class="icon-cross3 icon-position-left"></i></a>
+                                <a class="bussiness_del"  data-id-bussiness = "{{data.id}}"><i class="icon-cross3 icon-position-left"></i></a>
                             {% endif %}
                             {% endif %}
                         </div>

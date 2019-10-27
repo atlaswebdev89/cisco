@@ -72,7 +72,6 @@ class BussinessControllerShowAll extends BussinessController
         ];
     }
 
-
     //Получение главного блока данных точек доступа
     protected function mainBar () {
         return $this->view->fetch('template_bussiness_showAll.php',

@@ -109,7 +109,8 @@ class SearchController extends DisplayController
     //Получить необходимые скрипы для отображения страницы
     protected function getScripts () {
         return [
-            '/js/point-del.js'
+            '/js/point-del.js',
+            '/js/bussiness-del.js'
         ];
     }
     
