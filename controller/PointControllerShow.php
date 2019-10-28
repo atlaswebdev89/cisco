@@ -55,6 +55,8 @@ class PointControllerShow extends PointController {
 
             //Подключение необходимых скриптов
             $this->page_script = $this->getScripts();
+
+
             $this->title .=  $this->ip;
             $this->mainbar = $this->mainBar();
             parent::display($request, $response, $args);
@@ -86,6 +88,8 @@ class PointControllerShow extends PointController {
             '/js/point-del.js'
         ];
     }
+
+
 
     //Функция получения данных точки по id из бд
     protected function getDataPointId ($id) {

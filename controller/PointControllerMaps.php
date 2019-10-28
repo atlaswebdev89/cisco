@@ -1,8 +1,6 @@
 <?php
 
-
 namespace Controller;
-
 
 class PointControllerMaps extends PointController
 {
@@ -15,7 +13,6 @@ class PointControllerMaps extends PointController
     protected function display($request, $response, $args)
     {
         $this->title .= 'Maps';
-
         //Подключение необходимых скриптов
         $this->page_script = $this->getScripts();
         $this->dataPointAll = json_encode($this->getDataPoint());

@@ -15,25 +15,33 @@ function init () {
 
     for (var i = 0; i < dataPoint.length; i++ ) {
 
+        if(dataPoint[i].name){
+            var name = dataPoint[i].name;
+        }else {
+            var name = 'Нет данных';
+        }
+
          geoObjects[i] = new ymaps.Placemark([dataPoint[i].latitude,dataPoint[i].longitude],
             {
                 iconContent: '1',
                 hintContent: dataPoint[i].ssid,
                 balloonContent:
                     [
-                        '<div style="text-align: center">',
-                        '<span>Организация - ' + dataPoint[i].name +'</span><br />',
+                        '<div style="text-align: left">',
+                        '<span>Организация - ' + name +'</span><br />',
                         '<span>Название сети - ' + dataPoint[i].ssid +'</span><br />',
-                        '<span>IP адресс - ' + dataPoint[i].ip + '</span>',
+                        '<span>IP адресс - ' + dataPoint[i].ip + '</span><br />',
+                            '<div style="text-align: center;">',
+                                '<span ><a href ="/point/show/id/'+ dataPoint[i].id+'">Просмотр</a> <a href="/point/edit/id/'+ + dataPoint[i].id+'">Изменить</a> </span>',
+                            '</div>',
                         '</div>'
                     ].join(''),
                 iconCaption: dataPoint[i].ssid,            
-                clusterCaption: (dataPoint[i].name)
+                clusterCaption: (name)
             },
             {
-
                 iconColor: 'green',
-                iconGlyph: 'home',
+                iconGlyph: 'music',
                 iconGlyphColor: 'blue',
                 preset: 'islands#glyphIcon'
 
@@ -42,7 +50,8 @@ function init () {
     }
 
     var clusterer = new ymaps.Clusterer ({
-        clusterDisableClickZoom: true
+        clusterDisableClickZoom: true,
+        maxZoom: 13
     });
 
     map.geoObjects.add(clusterer);

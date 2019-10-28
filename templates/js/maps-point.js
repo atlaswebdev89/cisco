@@ -20,7 +20,8 @@ function init () {
                     '<span>Название сети - ' + ssid +'</span><br />',
                     '<span>IP адресс - ' + ip + '</span>',
                     '</div>'
-                ].join('')
+                ].join(''),
+            iconCaption: ssid
         },
         {
 
@@ -30,6 +31,9 @@ function init () {
             preset: 'islands#glyphIcon'
         });
 
+
     // Добавляем метку на карту
     map.geoObjects.add(myPlacemark);
+
+
 }
