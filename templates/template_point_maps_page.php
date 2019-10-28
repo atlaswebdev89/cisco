@@ -13,6 +13,9 @@
 
     <script>
         var dataPoint = {{data | raw }};
+        var longitude = {{longitude}};
+        var latitude = {{latitude}};
+        var zoom = {{zoom}};
     </script>
 
 </header>

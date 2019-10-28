@@ -5,8 +5,18 @@ namespace Controller;
 class PointControllerMaps extends PointController
 {
     protected $dataPointAll;
+    protected $x = 52.0947;
+    protected $y =23.6911;
+    protected $zoom =16;
     public function execute($request, $response, $args)
     {
+        if ($args['id']) {
+            if($result = $this->model->getDataPointId($args['id'])) {
+                $this->x = $result[0]['latitude'];
+                $this->y = $result[0]['longitude'];
+                $this->zoom = 19;               
+            }   
+        }
         return $this->display($request, $response, $args);
     }
 
@@ -16,7 +26,6 @@ class PointControllerMaps extends PointController
         //Подключение необходимых скриптов
         $this->page_script = $this->getScripts();
         $this->dataPointAll = json_encode($this->getDataPoint());
-        //print_r($this->dataPointAll);exit;
         $this->mainbar = $this->mainBar();
         parent::display($request, $response, $args);
     }
@@ -25,7 +34,10 @@ class PointControllerMaps extends PointController
     protected function mainBar () {
         return $this->view->fetch('template_point_maps_page.php',
                                     [
-                                        'data' => $this->dataPointAll
+                                        'data'      => $this->dataPointAll,
+                                        'latitude'  => $this->x,
+                                        'longitude' => $this->y,
+                                        'zoom'      => $this->zoom
         ]);
     }
 //Получить необходимые скрипы для отображения страницы

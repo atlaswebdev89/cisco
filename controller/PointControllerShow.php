@@ -15,6 +15,9 @@ class PointControllerShow extends PointController {
     //uri для редактирования и удаления
     protected $uri_delete_point;
     protected $uri_edit_point;
+    
+    //uri для отображения на общей карте
+    protected $uri_maps;
 
 
 
@@ -43,6 +46,7 @@ class PointControllerShow extends PointController {
             //Формируем сссылки для удаления и редактирования
             $this->uri_delete_point = '/point/delete/id/'.$this->id;
             $this->uri_edit_point   = '/point/edit/id/'.$this->id;
+            $this->uri_maps = '/point/maps/id/'. $this->id;
 
             //Данные для карты YandexMapsApi
             $this->latitude = ($this->data[0]['latitude']);
@@ -76,7 +80,8 @@ class PointControllerShow extends PointController {
                                             'edit'                  => $this->uri_edit_point,
                                             'show_block_admin'      => $this->showBlockadmin,
                                             'show_block_moderator'  => $this->showBlockmoderator,
-                                            'id'                    => $this->id
+                                            'id'                    => $this->id,
+                                            'maps'                  => $this->uri_maps
                                         ]);       
     }
 

@@ -1,8 +1,8 @@
 ymaps.ready(init);
 function init () {
     var map = new ymaps.Map ('map', {
-        center: [52.0947,23.6911],
-        zoom: 14,
+        center: [latitude,longitude],
+        zoom: zoom,
         controls: [
             'fullscreenControl',
             'zoomControl'

@@ -6,10 +6,6 @@
              <p class="compressed-box-50 mb-100 dark text-center" style="">
                    Данные точки Сisco<br>
                </p>
-             
-
-
-                 
                      <div class="dark" style="text-align: right; margin-bottom: 10px;">
                          <input class="btn-info btn text-center" type="button" onclick="history.back();" value="Назад"/>
                             {% if show_block_moderator %}
@@ -80,7 +76,9 @@
                             {%endfor%}  
                         </tbody>
                  </table>
-
+               <div class="text-center dark">
+                   <span><a href="{{maps}}">Показать на общей карте</a></span>
+               </div>
                      <div id="map" ></div>
              </div>  
            
