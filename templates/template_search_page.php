@@ -26,7 +26,7 @@
                     <div class="form-group">
                         <div class="col-md-6 col-md-offset-3 col-xs-12 input-group">
                             <span class="input-group-addon"><i class="icon-spinner9"></i></span>
-                            <input type="search" class="form-control" id="searchRequest" name="searchRequest" placeholder="Поиск...">
+                            <input type="search" class="form-control" id="searchRequest" name="searchRequest" placeholder="Поиск..." required>
                         </div>
                     </div>
                     <div class="form-group">

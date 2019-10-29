@@ -1,5 +1,6 @@
 $(document).ready(function(){
     var name = $('#name').val();
+    var color = $('#color').val();
     var urlRedirect = '/bussiness';
 
     $('#button-edit-bussiness').click(function() {
@@ -30,7 +31,7 @@ $(document).ready(function(){
             });
 
             //Проверка изменились ли значения полей формы. Если нет просто возраваемся назад. Если да - делаем запрос на Back-end
-            if(formData.get('name') != name )
+            if(formData.get('name') != name || formData.get('color') != color)
             {
                 ajaxdatasend($(this).parents('form'),formData)
             }else {

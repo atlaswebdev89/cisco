@@ -93,6 +93,7 @@
         var ip = '{{ip}}';
         var ssid = '{{ssid}}';
         var businness = '{{businness}}';
+        var placemark_color = '{{placemark_color}}';
     </script>
 
 

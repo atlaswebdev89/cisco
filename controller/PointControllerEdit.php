@@ -8,6 +8,7 @@ namespace Controller;
 class PointControllerEdit extends PointController
 {
     public $pointData;
+    protected $placemark_color;
 
     public function execute($request, $response, $args)
     {
@@ -49,6 +50,7 @@ class PointControllerEdit extends PointController
         $this->ssid = ($this->pointData[0]['ssid']);
         $this->ip = ($this->pointData[0]['ip']);
         $this->businness = ($this->pointData[0]['name']);
+        $this->placemark_color = ($this->pointData[0]['placemark_color']);
 
         $this->title .=  $this->ip;
         $this->page_script = $this->getScripts();
@@ -68,7 +70,7 @@ class PointControllerEdit extends PointController
                 'models' => $this->getModelCiscoForSelect(),
                 'ssid' => $this->getSsidForSelect(),
                 'speed' => $this->getSpeedForSelect(),
-
+                'placemark_color' => $this->placemark_color,
                 'longitude' => $this->longitude,
                 'latitude' => $this->latitude,
                 'ip' => $this->ip,

@@ -6,16 +6,24 @@
                 <p class="compressed-box-50 mb-100 dark text-center" style="">
                     Редактор организации<br>
                 </p>
-
-                <form class="compressed-box-50 m-auto point-redactor" method="">
-
+                <form class="compressed-box-50 m-auto point-redactor text-center dark"  method="">
+                    <input class="btn-info btn text-center" type="button" onclick="history.back();" value="Назад"/><br />
                     {%for point in data %}
                         <div class="form-group">
                             <div class ="input-group col-md-12">
+                                <label for="name" style="font-weight:inherit !important;">Название организации</label>
                                 <input id = "name"  value ="{{point.name}}" type="text" class="form-control" placeholder="название организации" name="name"  required>
                             </div>
                         </div>
-                          <input type="button" name="button-edit-bussiness" data-id-bussiness = "{{point.id}}" value ="изменить" class="btn btn-block btn-success " id="button-edit-bussiness">
+                    <div class="form-group">
+                            <div class ="input-group col-md-12">
+                                <label for="color" style="font-weight:inherit !important;">Цвет метки на карте</label>
+                                <input class="form-control jscolor {hash:true}" type="text" id="color" name="color" value ="{{point.placemark_color}}" placeholder="цвет метки на карте" />
+                            </div>
+                    </div>
+
+
+                    <input type="button" name="button-edit-bussiness" data-id-bussiness = "{{point.id}}" value ="изменить" class="btn btn-block btn-success " id="button-edit-bussiness">
                         <div class="form-group response_order">
                             <p style="text-align: center; display: none;"></p>
                         </div>

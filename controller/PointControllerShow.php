@@ -12,6 +12,7 @@ class PointControllerShow extends PointController {
     public $ssid;
     public $ip;
     public $businness;
+    protected $placemark_color;
     //uri для редактирования и удаления
     protected $uri_delete_point;
     protected $uri_edit_point;
@@ -56,6 +57,7 @@ class PointControllerShow extends PointController {
             $this->ssid = ($this->data[0]['ssid']);
             $this->ip = ($this->data[0]['ip']);
             $this->businness = ($this->data[0]['name']);
+            $this->placemark_color = ($this->data[0]['placemark_color']);
 
             //Подключение необходимых скриптов
             $this->page_script = $this->getScripts();
@@ -76,6 +78,7 @@ class PointControllerShow extends PointController {
                                             'ip'                    => $this->ip,
                                             'ssid'                  => $this->ssid,
                                             'businness'             => $this->businness,
+                                            'placemark_color'       => $this->placemark_color,
                                             'delete'                => $this->uri_delete_point,
                                             'edit'                  => $this->uri_edit_point,
                                             'show_block_admin'      => $this->showBlockadmin,

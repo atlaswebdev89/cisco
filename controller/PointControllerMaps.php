@@ -10,7 +10,7 @@ class PointControllerMaps extends PointController
     protected $zoom =16;
     public function execute($request, $response, $args)
     {
-        if ($args['id']) {
+        if (isset($args['id'])) {
             if($result = $this->model->getDataPointId($args['id'])) {
                 $this->x = $result[0]['latitude'];
                 $this->y = $result[0]['longitude'];

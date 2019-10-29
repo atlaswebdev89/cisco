@@ -11,7 +11,6 @@ function init () {
     });
     var myPlacemark = new ymaps.Placemark([latitude,longitude],
         {
-            iconContent: '1',
             hintContent: ssid,
             balloonContent:
                 [
@@ -24,11 +23,7 @@ function init () {
             iconCaption: ssid
         },
         {
-
-            iconColor: 'green',
-            iconGlyph: 'home',
-            iconGlyphColor: 'blue',
-            preset: 'islands#glyphIcon'
+            iconColor: placemark_color
         });
 
 

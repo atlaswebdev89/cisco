@@ -5,6 +5,11 @@
                 <h2 class="dark text-center" style="" data-aos="zoom-in" data-aos-easing="none" data-aos-duration="500" data-aos-delay="0">
                     <strong>Access Point</strong>&nbsp; Maps
                 </h2>
+                <div id="cityShop">
+                    <label for="cities">Город</label>:
+                    <select name="cities" id="cities"></select>
+                    <ul id="shops"></ul>
+                </div>
                     <div id="map" class=""></div>
             </div>
         </div>

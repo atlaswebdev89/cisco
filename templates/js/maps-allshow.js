@@ -10,7 +10,6 @@ function init () {
         behaviors:['drag']
     });
 
-
     var geoObjects=[];
 
     for (var i = 0; i < dataPoint.length; i++ ) {
@@ -23,7 +22,6 @@ function init () {
 
          geoObjects[i] = new ymaps.Placemark([dataPoint[i].latitude,dataPoint[i].longitude],
             {
-                iconContent: '1',
                 hintContent: dataPoint[i].ssid,
                 balloonContent:
                     [
@@ -40,11 +38,7 @@ function init () {
                 clusterCaption: (name)
             },
             {
-                iconColor: 'green',
-                iconGlyph: 'music',
-                iconGlyphColor: 'blue',
-                preset: 'islands#glyphIcon'
-
+                iconColor: dataPoint[i].placemark_color
             });
 
     }

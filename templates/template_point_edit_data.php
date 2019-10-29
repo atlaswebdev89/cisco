@@ -166,6 +166,7 @@
         var idPoint = {{idPoint}};
         var ssid = '{{ssidName}}';
         var businness = '{{businnessName}}';
+        var placemark_color = '{{placemark_color}}';
     </script>
 </header>
 

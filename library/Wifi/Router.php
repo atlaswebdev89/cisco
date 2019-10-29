@@ -50,10 +50,7 @@ class Router {
                    $this->post('/search[/]',                        '\Controller\PointControllerSearch:execute' )   ->setName('points_search');
 
                 });
-                $this->group('/console', function () {
-                    $this->get('[/]',                        '\Controller\ConsoleController:execute')  ->setName('points'); 
-                    $this->get('/show[/]',                   '\Controller\ConsoleController:execute')  ->setName('show_points'); 
-                });
+
          })->add('Wifi\Middleware:AuthLogin');
 
          $this->app->map(['GET', 'POST'], '/login[/]', '\Controller\LoginController:execute')->setName('login');

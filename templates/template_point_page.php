@@ -22,20 +22,6 @@
 
                 </style>
 
-                    <form>
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-3 col-xs-12 input-group">
-                                <span class="input-group-addon"><i class="icon-spinner9"></i></span>
-                                <input type="search" class="form-control" id="search" placeholder="Введите ip точки">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-md-offset-5 col-md-4" >
-                                <button type="button" class="btn btn-default">Поиск</button>
-                            </div>
-                        </div>
-                    </form>
-
                 {% if message %}
                     <div class="col-md-12 pt-25" >
                         <h2 class ="dark text-center" ><span style="color: #ffefef; font-family: 'Amatic SC', cursive !important;">{{message}}</span></h2>
