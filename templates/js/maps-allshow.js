@@ -56,6 +56,13 @@ function init () {
             provider: 'yandex#search'
         }
     });
-
+  // масштабирование карты, чтобы влазили все объекты
    map.controls.add(searchControl);
+   if(zoom < 19) {
+       map.setBounds(map.geoObjects.getBounds(), {
+           checkZoomRange: true
+       }).then(function () {
+           if (map.getZoom() > 15) map.setZoom(15); // Если значение zoom превышает 15, то устанавливаем 15.
+       });
+   }
 }
