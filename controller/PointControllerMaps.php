@@ -11,10 +11,12 @@ class PointControllerMaps extends PointController
     protected $x = 52.0947;
     protected $y =23.6911;
     protected $zoom =16;
+    protected $id_bussiness;
 
     public function execute($request, $response, $args)
     {
         if (isset($args['id'])) {
+            
             if($result = $this->model->getDataPointId($args['id'])) {
                 $this->x = $result[0]['latitude'];
                 $this->y = $result[0]['longitude'];
@@ -23,6 +25,14 @@ class PointControllerMaps extends PointController
         }
         return $this->display($request, $response, $args);
     }
+    
+    public function showMapsBussiness ($request, $response, $args) {
+        if (isset($args['id'])) {
+            $this->id_bussiness = $args['id'];           
+        }
+        return $this->display($request, $response, $args);
+    }
+        
 
     protected function display($request, $response, $args)
     {
@@ -45,10 +55,11 @@ class PointControllerMaps extends PointController
     protected function mainBar () {
         return $this->view->fetch('template_point_maps_page.php',
                                     [
-                                        'data'      => $this->dataPointJson,
-                                        'latitude'  => $this->x,
-                                        'longitude' => $this->y,
-                                        'zoom'      => $this->zoom
+                                        'data'          => $this->dataPointJson,
+                                        'latitude'      => $this->x,
+                                        'longitude'     => $this->y,
+                                        'zoom'          => $this->zoom,
+                                        'id_bussiness'  => $this->id_bussiness
         ]);
     }
 //Получить необходимые скрипы для отображения страницы
@@ -71,6 +82,7 @@ class PointControllerMaps extends PointController
         $array = array();
         $i=0;
         for ($i; $i <(count($Bussines)); $i++){
+            $array[$i]['id'] =   $Bussines[$i]['id'];
             $array[$i]['name'] = $Bussines[$i]['name'];
             $array[$i]['color'] = $Bussines[$i]['placemark_color'];
 

@@ -1,4 +1,5 @@
 var geoobjects=[];
+var nameBussines = [];
 ymaps.ready(init);
 function init () {
     var map = new ymaps.Map ('map', {
@@ -18,13 +19,15 @@ function init () {
     
     map.geoObjects.add(clusterer);
 
-    $('select#points').append('<option selected = "selected" value="all">Все точки</option>');
+    $('select#points').append('<option value="all">Все точки</option>');
     
     for (var i = 0; i < dataPoint.length; i++) {
         var pointGroup=[];
         // Добавляем название города в выпадающий список
         
-        $('select#points').append('<option value="' + i + '">' + dataPoint[i].name + '</option>');
+        $('select#points').append('<option value="' + i + '">' + dataPoint[i].name + '</option>');     
+        //Массив сопостовления названия Фирмы и идентивикатора массива точек
+        nameBussines[dataPoint[i].id] = i;
         // Создаём коллекцию меток для города
 
         for (var c = 0; c < dataPoint[i].items.length; c++) {
@@ -56,25 +59,36 @@ function init () {
         geoobjects[i] = pointGroup;
         clusterer.add(geoobjects[i]);
     }
+    
+    if(idGroupRequest) {
+        clusterer.removeAll();
+        getMarksGroups(nameBussines[idGroupRequest]);       
+    }
 
 // Переключение точек в зависимости от организаций
 $(document).on('change', $('select#points'), function () {
     clusterer.removeAll();
     var PointGroupId = $('select#points').val();  
-   
-    if (PointGroupId=='all') {
+    getMarksGroups(PointGroupId);
+});
+ 
+ 
+ //Функция отображения выбранной группы меток или группы переданой в запросе
+ function getMarksGroups (id) {
+      if (id=='all') {
        geoobjects.forEach(function(item) {
            clusterer.add(item);
        })
    }else {
-           clusterer.add(geoobjects[PointGroupId]); 
+           clusterer.add(geoobjects[id]); 
    }
    // Масштабируем и выравниваем карту так, чтобы были видны метки для выбранной организации
     map.setBounds(map.geoObjects.getBounds(), {checkZoomRange:true}).then(function(){
         if(myMap.getZoom() > 15) myMap.setZoom(15); // Если значение zoom превышает 15, то устанавливаем 15.
     });
-});
- 
+     
+ }
+    
     var searchControl = new ymaps.control.SearchControl({
         options: {
             provider: 'yandex#search'

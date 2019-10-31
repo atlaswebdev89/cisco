@@ -47,6 +47,7 @@ class Router {
                    $this->get('/edit/id/{id}',                      '\Controller\PointControllerEdit:execute')      ->setName('edit_point_show');
                    $this->post('/edit[/]',                          '\Controller\PointControllerEdit:edit')         ->setName('edit_point');
                    $this->get('/maps[/[id/{id}[/]]]',               '\Controller\PointControllerMaps:execute' )     ->setName('points_maps');
+                   $this->get('/maps/bussiness/id/{id}[/]',         '\Controller\PointControllerMaps:showMapsBussiness' )     ->setName('points_maps_bussiness');
                    $this->post('/search[/]',                        '\Controller\PointControllerSearch:execute' )   ->setName('points_search');
 
                 });

@@ -20,6 +20,7 @@
         var longitude = {{longitude}};
         var latitude = {{latitude}};
         var zoom = {{zoom}};
+        var idGroupRequest = '{{id_bussiness}}';
     </script>
 
 </header>
