@@ -22,6 +22,7 @@ function init () {
                 ].join('')
         },
         {
+            draggable: true,
             iconColor: placemark_color
         });
     
