@@ -5,9 +5,13 @@ namespace Controller;
 class PointControllerMaps extends PointController
 {
     protected $dataPointAll;
+    protected $dataPointJson;
+    protected $collections;
+    //Default Coordinaties maps;
     protected $x = 52.0947;
     protected $y =23.6911;
     protected $zoom =16;
+
     public function execute($request, $response, $args)
     {
         if (isset($args['id'])) {
@@ -25,7 +29,14 @@ class PointControllerMaps extends PointController
         $this->title .= 'Maps';
         //Подключение необходимых скриптов
         $this->page_script = $this->getScripts();
-        $this->dataPointAll = json_encode($this->getDataPoint());
+        //Получение данных всех точек
+        $this->dataPointAll = $this->getDataPoint();
+       //Получение списка организаций для формирования коллекций (maps API yandex)
+        $this->collections = $this->getCollectionBd();
+
+        $this->dataPointJson = $this->getCollections($this->dataPointAll, $this->collections);
+
+       // print_r($this->dataPointJson);exit;
         $this->mainbar = $this->mainBar();
         parent::display($request, $response, $args);
     }
@@ -34,7 +45,7 @@ class PointControllerMaps extends PointController
     protected function mainBar () {
         return $this->view->fetch('template_point_maps_page.php',
                                     [
-                                        'data'      => $this->dataPointAll,
+                                        'data'      => $this->dataPointJson,
                                         'latitude'  => $this->x,
                                         'longitude' => $this->y,
                                         'zoom'      => $this->zoom
@@ -44,11 +55,34 @@ class PointControllerMaps extends PointController
     protected function getScripts () {
         return [
             'https://api-maps.yandex.ru/2.1/?apikey=e47ca267-409d-4f76-b09a-2c71c39d6c14&lang=ru_RU',
-            '/js/maps-allshow.js'
+            '/js/maps-show-collections.js'
         ];
     }
 
     protected function getDataPoint () {
         return $this->model->getDataPoint();
+    }
+
+    protected function getCollectionBd() {
+        return $this->model->getBusinessForSelect();
+    }
+
+    protected function getCollections($allData, $Bussines) {
+        $array = array();
+        $i=0;
+        for ($i; $i <(count($Bussines)); $i++){
+            $array[$i]['name'] = $Bussines[$i]['name'];
+            $array[$i]['color'] = $Bussines[$i]['placemark_color'];
+
+            foreach ($allData as $key=>$item) {
+                if ($array[$i]['name'] == $item['name'])
+                {
+                    $array[$i]['items'][] = $item;
+                }
+            }
+        }
+        $json = json_encode($array);
+        return $json;
+
     }
 }
