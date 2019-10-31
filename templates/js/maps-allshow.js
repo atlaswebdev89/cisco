@@ -47,7 +47,7 @@ function init () {
         clusterDisableClickZoom: true,
         maxZoom: 13
     });
-
+    
     map.geoObjects.add(clusterer);
     clusterer.add(geoObjects);
 

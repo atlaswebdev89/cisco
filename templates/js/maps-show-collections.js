@@ -1,4 +1,4 @@
-var  placemarkList;
+var geoobjects=[];
 ymaps.ready(init);
 function init () {
     var map = new ymaps.Map ('map', {
@@ -10,54 +10,78 @@ function init () {
         ],
         behaviors:['drag']
     });
+      
+    var clusterer = new ymaps.Clusterer ({
+        clusterDisableClickZoom: true,
+        maxZoom: 13
+    });
+    
+    map.geoObjects.add(clusterer);
 
-
+    $('select#points').append('<option selected = "selected" value="all">Все точки</option>');
+    
     for (var i = 0; i < dataPoint.length; i++) {
+        var pointGroup=[];
         // Добавляем название города в выпадающий список
-        $('select#cities').append('<option value="' + i + '">' + dataPoint[i].name + '</option>');
+        
+        $('select#points').append('<option value="' + i + '">' + dataPoint[i].name + '</option>');
         // Создаём коллекцию меток для города
-        var cityCollection = new ymaps.GeoObjectCollection();
 
         for (var c = 0; c < dataPoint[i].items.length; c++) {
-            var shopInfo = dataPoint[i].items[c];
+            var PointInfo = dataPoint[i].items[c];
 
-            var shopPlacemark = new ymaps.Placemark([shopInfo.latitude,shopInfo.longitude],
+            var PointPlacemark = new ymaps.Placemark([PointInfo.latitude,PointInfo.longitude],
                 {
-                    hintContent: shopInfo.ssid,
+                    hintContent: PointInfo.ssid,
                     balloonContent:
                         [
                             '<div style="text-align: left">',
-                            '<span>Организация - ' + shopInfo.name +'</span><br />',
-                            '<span>Название сети - ' + shopInfo.ssid +'</span><br />',
-                            '<span>IP адресс - ' + shopInfo.ip + '</span><br />',
+                            '<span>Организация - ' + PointInfo.name +'</span><br />',
+                            '<span>Название сети - ' + PointInfo.ssid +'</span><br />',
+                            '<span>IP адресс - ' + PointInfo.ip + '</span><br />',
                             '<div style="text-align: center;">',
-                            '<span ><a href ="/point/show/id/'+ shopInfo.id+'">Просмотр</a> <a href="/point/edit/id/'+ + shopInfo.id+'">Изменить</a> </span>',
+                            '<span ><a href ="/point/show/id/'+ PointInfo.id+'">Просмотр</a> <a href="/point/edit/id/'+ + PointInfo.id+'">Изменить</a> </span>',
                             '</div>',
                             '</div>'
                         ].join(''),
-                    iconCaption: shopInfo.ssid,
-                    clusterCaption: (shopInfo.name)
+                    iconCaption: PointInfo.ssid,
+                    clusterCaption: (PointInfo.name)
                 },
                 {
-                    iconColor: shopInfo.placemark_color
+                    iconColor: PointInfo.placemark_color
                 }
             );
-            // Добавляем метку в коллекцию
-            cityCollection.add(shopPlacemark);
-        }
-        // Добавляем коллекцию на карту
-       map.geoObjects.add(cityCollection);
+             pointGroup[c]=PointPlacemark;             
+        }       
+        geoobjects[i] = pointGroup;
+        clusterer.add(geoobjects[i]);
     }
 
-
-
+// Переключение точек в зависимости от организаций
+$(document).on('change', $('select#points'), function () {
+    clusterer.removeAll();
+    var PointGroupId = $('select#points').val();  
+   
+    if (PointGroupId=='all') {
+       geoobjects.forEach(function(item) {
+           clusterer.add(item);
+       })
+   }else {
+           clusterer.add(geoobjects[PointGroupId]); 
+   }
+   // Масштабируем и выравниваем карту так, чтобы были видны метки для выбранной организации
+    map.setBounds(map.geoObjects.getBounds(), {checkZoomRange:true}).then(function(){
+        if(myMap.getZoom() > 15) myMap.setZoom(15); // Если значение zoom превышает 15, то устанавливаем 15.
+    });
+});
+ 
     var searchControl = new ymaps.control.SearchControl({
         options: {
             provider: 'yandex#search'
         }
     });
     map.controls.add(searchControl);
-
+  
     // масштабирование карты, чтобы влазили все объекты
     if(zoom < 19) {
         map.setBounds(map.geoObjects.getBounds(), {

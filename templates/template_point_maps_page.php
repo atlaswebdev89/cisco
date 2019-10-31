@@ -1,14 +1,13 @@
 <header id="header-slogan-modal-2" class="pt-100 pb-50 light">
     <div class="container-fluid">
         <div class="row flex-md-vmiddle">
-            <div class="col-md-12 pl" id="button" style="padding: 5px; margin-right: 15px; margin-left: 15px;">
+            <div class="col-md-12" id="button" style="padding: 5px; margin-right: 15px; margin-left: 15px;">
                 <h2 class="dark text-center" style="" data-aos="zoom-in" data-aos-easing="none" data-aos-duration="500" data-aos-delay="0">
-                    <strong>Access Point</strong>&nbsp; Maps
+                    <strong>Access Point</strong> Maps
                 </h2>
-                <div id="cityShop">
-                    <label for="cities">Город</label>:
-                    <select name="cities" id="cities"></select>
-                    <ul id="shops"></ul>
+                <div id="cityShop" class="text-center" >
+                    <label for="points" class="dark">Группы точек</label>:
+                    <select name="points" id="points"></select>                   
                 </div>
                     <div id="map" class="" ></div>
             </div>
