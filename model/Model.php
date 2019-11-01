@@ -620,6 +620,14 @@ public function getRolePermisions () {
         return $result;
     }
 
+    //Получение организаций к которым привязаны точки доступа (могут быть организации без точек доступа)
+    public function getBussinessavailable () {
+        $type = "arraydata";
+        $sql = "SELECT * FROM `".PREF."business` WHERE (SELECT COUNT(*) FROM `".PREF."point_data` WHERE `".PREF."point_data`.`id_business` = `".PREF."business`.`id`) > 0";
+        $result = $this->driver->query($sql, $type);
+        return $result;
+    }
+
 
 
 

@@ -28,7 +28,10 @@ class PointControllerMaps extends PointController
     
     public function showMapsBussiness ($request, $response, $args) {
         if (isset($args['id'])) {
-            $this->id_bussiness = $args['id'];           
+            if (!$this->model->getPointBussId($args['id'])) {
+                throw new \Slim\Exception\NotFoundException($request, $response);
+            }
+            $this->id_bussiness = $args['id'];
         }
         return $this->display($request, $response, $args);
     }
@@ -75,16 +78,17 @@ class PointControllerMaps extends PointController
     }
 
     protected function getCollectionBd() {
-        return $this->model->getBusinessForSelect();
+        return $this->model->getBussinessavailable();
     }
 
     protected function getCollections($allData, $Bussines) {
         $array = array();
         $i=0;
         for ($i; $i <(count($Bussines)); $i++){
-            $array[$i]['id'] =   $Bussines[$i]['id'];
-            $array[$i]['name'] = $Bussines[$i]['name'];
-            $array[$i]['color'] = $Bussines[$i]['placemark_color'];
+
+                $array[$i]['id'] = $Bussines[$i]['id'];
+                $array[$i]['name'] = $Bussines[$i]['name'];
+                $array[$i]['color'] = $Bussines[$i]['placemark_color'];
 
             foreach ($allData as $key=>$item) {
                 if ($array[$i]['name'] == $item['name'])
@@ -93,6 +97,7 @@ class PointControllerMaps extends PointController
                 }
             }
         }
+
         $json = json_encode($array);
         return $json;
 

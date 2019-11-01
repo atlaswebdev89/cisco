@@ -39,7 +39,11 @@
                                 <div><i class="icon-location22 icon-position-left" ></i>{{data.address}}</div>
                             </div>
                             <div class="col-md-2">
-                                <div><i class="icon-library3 icon-position-left"></i><a href="#">{{data.name}}</a></div>
+                                {% if data.name %}
+                                        <div><i class="icon-library3 icon-position-left"></i><a href="#">{{data.name}}</a></div>
+                                {% else %}
+                                        <div><i class="icon-library3 icon-position-left"></i><span  style="color: #039dd0;">Нет данных</span></div>
+                                {% endif %}
                             </div>
                             <div class="col-md-2">
                                 <span>Активация: {{ data.installation_date }}</span>

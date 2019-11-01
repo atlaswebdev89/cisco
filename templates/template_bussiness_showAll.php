@@ -32,16 +32,28 @@
                 {% for data in bussiness %}
                 <div class="dark parent-block" style="color: #FFFFFF; font-size: 16px;">
                     <div class="col-md-12 col-xs-12 point-data" style="border: 1px solid silver; border-radius: 5px; margin: 5px; padding-bottom: 10px; padding-top: 10px;">
-                        <div class="col-md-3">
+                        <div class="col-md-4">
                             <div><i class="icon-library3 icon-position-left" ></i><a href="/bussiness/show/id/{{data.id}}" style="color: #3dff53" >{{data.name}}</a></div>
                         </div>
 
-                        <div class="col-md-4">
-                            <div><i class="icon-podcast icon-position-left"></i><span>Точки: </span><a href="/bussiness/points/show/id/{{data.id}}" style="color: #3dff53" >{{data.point}}</a></div>
+                        <div class="col-md-3">
+                            <div><i class="icon-podcast icon-position-left"></i><span>Точки: </span>
+                                {% if data.point>0 %}
+                                    <a href="/bussiness/points/show/id/{{data.id}}" style="color: #3dff53" >{{data.point}}</a>
+                                {% else %}
+                                    <span>{{data.point}}</span>
+                                {% endif %}
+                            </div>
                         </div>
      
                         <div class="col-md-3">
-                            <div><i class="icon-podcast icon-position-left"></i><a href="/point/maps/bussiness/id/{{data.id}}" style="color: #3dff53" >Карта</a></div>
+                            <div><i class="icon-pushpin3 icon-position-left"></i>
+                                {% if data.point>0 %}
+                                    <a href="/point/maps/bussiness/id/{{data.id}}" style="color: #3dff53" >Карта</a>
+                                {% else %}
+                                    <span>Карта</span>
+                                {% endif %}
+                            </div>
                         </div>
                         
                         <div class="col-md-2">
