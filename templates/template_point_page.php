@@ -6,21 +6,6 @@
                 <p class="compressed-box-50 mb-100 dark text-center" >
                     Список установленных точек доступа CiscoWifi<br>
                 </p>
-                <style>
-                    a:link {
-                        color: #0000d0; /* Цвет ссылок */
-                        padding: 2px; /* Поля вокруг текста */
-                    }
-                    a:hover {
-
-                        color: #fff;
-                    }
-                    .point-data:hover {
-                        background: #2f2e2ea3; /* Цвет фона под ссылкой */
-                        box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
-                    }
-
-                </style>
 
                 {% if message %}
                     <div class="col-md-12 pt-25" >

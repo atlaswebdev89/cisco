@@ -1,4 +1,4 @@
-<header id="header-slogan-modal-2" class="pt-100 pb-50 light">
+<header id="header-slogan-modal-2" class="pt-100 pb-200 light">
     <div class="container-fluid">
         <div class="row flex-md-vmiddle">
             <div class="col-md-12" id="button" style="padding: 5px; margin-right: 15px; margin-left: 15px;">

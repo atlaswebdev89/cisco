@@ -102,3 +102,9 @@ section#logindata {
 .point-redactor .input-group {
     width: 100%;
 }
+
+.point-data:hover {
+    background: #2f2e2ea3; /* Цвет фона под ссылкой */
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+

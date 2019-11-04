@@ -4,23 +4,8 @@
             <div class="col-md-12" id="button">
                 <h2 class="dark text-center" data-aos="zoom-in" data-aos-easing="none" data-aos-duration="500" data-aos-delay="0"><strong>Access Point</strong>&nbsp; CiscoWifi</h2>
                 <p class="compressed-box-50 mb-100 dark text-center" >
-                    Список установленных точек доступа CiscoWifi<br>
+                    Поиск организаций<br>
                 </p>
-                <style>
-                    a:link {
-                        color: #0000d0; /* Цвет ссылок */
-                        padding: 2px; /* Поля вокруг текста */
-                    }
-                    a:hover {
-
-                        color: #fff;
-                    }
-                    .point-data:hover {
-                        background: #2f2e2ea3; /* Цвет фона под ссылкой */
-                        box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
-                    }
-
-                </style>
 
                 <form action="/search/" method="get">
                     <div class="form-group">
