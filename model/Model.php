@@ -391,9 +391,9 @@ public function getRolePermisions () {
     {
         $type = "insert";
         $sql = "INSERT INTO `" . PREF . "point_data` (ip, latitude, longitude, id_address, id_business, notice, set_place, "
-            . "speed_download, speed_upload, id_ssid, type, id_model, mac, installation_date) values (:ip, :latitude, :longitude, "
+            . "speed_download, speed_upload, id_ssid, type, id_model, mac, installation_date, schema_connect, customer) values (:ip, :latitude, :longitude, "
             . ":id_address, :id_business, :notice, :set_place, "
-            . ":speed_download, :speed_upload, :id_ssid, :type, :id_model, :mac, :installation_date)";
+            . ":speed_download, :speed_upload, :id_ssid, :type, :id_model, :mac, :installation_date, :schema_connect, :customer)";
         $data_array = array(
             'ip' => $data['ip'],
             'latitude' => $data['latitude'],
@@ -408,8 +408,9 @@ public function getRolePermisions () {
             'type' => $data['type'],
             'id_model' => $data['id_model'],
             'mac' => $data['mac'],
-            'installation_date' => $data['installation_date']
-
+            'installation_date' => $data['installation_date'],
+            'schema_connect' => $data['schema'],
+            'customer' => $data['customer']
         );
         $result = $this->driver->query($sql, $type, $data_array);
         return $result;
@@ -441,7 +442,7 @@ public function getRolePermisions () {
     public function getDataPointId($id) {
         $type = "arraydata";
         $sql = "SELECT `".PREF."point_data`.`id`, INET_NTOA(`".PREF."point_data`.`ip`) as ip, `".PREF."point_data`.`latitude`, `".PREF."point_data`.`longitude`,"
-            . "`".PREF."point_data`.`notice`, `".PREF."point_data`.`set_place`,  "
+            . "`".PREF."point_data`.`notice`, `".PREF."point_data`.`set_place`, `".PREF."point_data`.`schema_connect`, `".PREF."point_data`.`customer`,  "
             . "`".PREF."point_data`.`speed_download`, `".PREF."point_data`.`speed_upload`, `".PREF."point_data`.`type`, `".PREF."point_data`.`mac`, "
             . "`".PREF."point_data`.`installation_date`, `".PREF."point_address`.`address`, `".PREF."point_ssid`.`ssid`, `".PREF."points_model`.`model`, "
             . "`".PREF."business`.`name`, `".PREF."business`.`placemark_color`"
@@ -483,7 +484,8 @@ public function getRolePermisions () {
         $sql = "UPDATE `".PREF."point_data` set `ip` = :ip, `latitude` = :latitude, `longitude` = :longitude ,"
             . "`notice` = :notice, `set_place`= :set_place, `id_address` = :id_address, `id_business` = :id_business,"
             ." `speed_download` = :speed_download, `speed_upload` =:speed_upload, `id_ssid` =:id_ssid,"
-            ."`type`=:type, `id_model`=:id_model, `mac`=:mac, `installation_date`= :installation_date"
+            ."`type`=:type, `id_model`=:id_model, `mac`=:mac, `installation_date`= :installation_date,"
+            ."`schema_connect` =:schema_connect, `customer` =:customer"
             . " WHERE `".PREF."point_data`.`id`= :id";
         $data_array = array(
             'id' => $data['id'],
@@ -500,7 +502,9 @@ public function getRolePermisions () {
             'type' => $data['type'],
             'id_model' => $data['id_model'],
             'mac' => $data['mac'],
-            'installation_date' => $data['installation_date']
+            'installation_date' => $data['installation_date'],
+            'schema_connect' => $data['schema'],
+            'customer' => $data['customer']
         );
         $result =  $this->driver->query($sql, $type, $data_array);
         return $result;

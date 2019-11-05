@@ -68,6 +68,14 @@
                                           <th scope="row">Место установки</th>
                                           <td>{{ data.set_place }}</td>
                                         </tr>
+                                          <tr>
+                                              <th scope="row">Схема подключения</th>
+                                              <td>{{ data.schema_connect }}</td>
+                                          </tr>
+                                          <tr>
+                                              <th scope="row">Контакты заказчика</th>
+                                              <td>{{ data.customer }}</td>
+                                          </tr>
                                         <tr>
                                           <th scope="row">Примечание</th>
                                           <td>{{ data.notice }}</td>

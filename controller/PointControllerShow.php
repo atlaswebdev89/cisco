@@ -62,7 +62,6 @@ class PointControllerShow extends PointController {
             //Подключение необходимых скриптов
             $this->page_script = $this->getScripts();
 
-
             $this->title .=  $this->ip;
             $this->mainbar = $this->mainBar();
             parent::display($request, $response, $args);

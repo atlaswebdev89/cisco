@@ -38,6 +38,8 @@ class PointController extends DisplayController {
                 $array['id_model']           =           (int)$data['model-point'];
                 $array['id_ssid']            =           $data['ssid'];
                 $array['id_address']         =           $data['address'];
+                $array['customer']           =           $data['customer'];
+                $array['schema']             =           $data['schema'];
         return $array;
     }
 

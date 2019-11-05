@@ -2,12 +2,11 @@
 <html lang="ru">
 <head>
     {% block header %}
-    {% include 'header.php' %}
+        {% include 'header.php' %}
     {% endblock %}
 </head>
 
 <body class="light-page">
-
 
     <nav id="nav-fluid-logo-menu-btn" class="navbar navbar-fixed-top dark">
             <div class="container-fluid">
@@ -43,16 +42,14 @@
         <div id="wrap">
                 {% block content %} 		
                 {% endblock %}
-       
+
                 {% block footer %}
-                   {% include 'footer.php' %}
+                    {% include 'footer.php' %}
                 {% endblock %}
         </div>
-		
-		{% block scripts %}
+            {% block scripts %}
                     {% include 'footer-scripts.php' %}
             {% endblock %}
-
 	</body>
 </html>
 

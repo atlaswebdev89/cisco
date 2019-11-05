@@ -7,9 +7,10 @@
                    Добавить точку доступа<br>
                </p>
 
-                      <form class="compressed-box-50 m-auto point-redactor" method="POST">
+                      <form class="compressed-box-50 m-auto point-redactor text-center" method="POST">
 
                           <div class="form-group">
+                              <label>Название организации</label>
                                <select id = "form-point-add" class="form-control" name = "busines" required>
                                             <option></option>
                                              {%for data in business%}
@@ -19,13 +20,14 @@
                             </div>
 
                           <div class="form-group">
-
                                    <div class ="input-group col-md-12">
+                                       <label for="ip">Ip точки</label>
                                        <input id = "ip" type="text" class="form-control" placeholder="ip адрес точки" name="ip"   required>
                                    </div>
                            </div>
 
                           <div class="form-group">
+                              <label>Название сети</label>
                                <select id = "ssid-add" class="form-control" name = "ssid" required>
                                             <option></option>
                                              {%for data in ssid%}
@@ -35,6 +37,7 @@
                             </div>
 
                           <div class="form-group">
+                              <label>Тип точки</label>
                               <select class="form-control" title="Укажите тип точки" placeholder="тип точки" name = "type-point" required>
                                   <option selected="selected" value = '' disabled="disabled">Тип точки</option>
                                   <option value = "Внутреняя">Внутреняя</option>
@@ -43,6 +46,7 @@
                            </div>
 
                           <div class="form-group">
+                              <label>Модель точки</label>
                               <select class="my-select form-control"  name = "model-point" required>
                                   <option selected="selected" value = '' disabled="disabled">Модель точки</option>
                                           {%for data in models%}
@@ -73,6 +77,7 @@
 
                           <div class="form-group ">
                                    <div class ="input-group col-md-12">
+                                       <label for="mac_address">MAC адрес точки</label>
                                        <input type="text" class="form-control" placeholder="Mac-адрес" name="mac_address" id="mac_address" required>
                                    </div>
                            </div>
@@ -84,7 +89,7 @@
                                    </div>
                            </div>
                             <div class="form-group">
-                                   <div class ="input-group col-md-12">
+                                   <div class ="input-group col-md-12 ">
                                        <label for="suggest">Адрес установки</label>
                                        <input type="text" class="form-control" name ="address" id="suggest" required>
                                    </div>
@@ -110,12 +115,25 @@
 
                            <div class="form-group">
                                    <div class ="input-group col-md-12">
-                                       <input type="text" class="form-control" placeholder="Место установки" name="set_place" id="set_place" required>
+                                       <label for="set_place">Место установки</label>
+                                       <input type="text" class="form-control" placeholder="Место установки" name="set_place" id="set_place">
                                    </div>
                            </div>
-
+                          <div class="form-group">
+                              <div class ="input-group col-md-12">
+                                  <label for="schema">Схема подключения</label>
+                                  <textarea class="form-control" placeholder="Схема подключения" name="schema" id="schema" rows=2></textarea>
+                              </div>
+                          </div>
+                          <div class="form-group">
+                              <div class ="input-group col-md-12">
+                                  <label for="customer">Контакты заказчика</label>
+                                  <input type="text" class="form-control" placeholder="Контакты заказчика" name="customer" id="customer">
+                              </div>
+                          </div>
                           <div class="form-group">
                                    <div class ="input-group col-md-12">
+                                       <label for="notice">Примечание</label>
                                        <textarea class="form-control" placeholder="Примечание" name="notice" id="notice" rows=2></textarea>
                                    </div>
                            </div>
