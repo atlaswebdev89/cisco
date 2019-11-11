@@ -31,7 +31,7 @@ class BussinessControllerShowAll extends BussinessController
             'fields'            => " *, (SELECT COUNT(*) FROM `".PREF."point_data` WHERE `".PREF."point_data`.`id_business` = `".PREF."business`.`id`) as point",
             'join'              => FALSE,
             'where'             => FALSE,
-            'order'             => " ORDER BY `point` DESC",
+            'order'             => " ORDER BY `point` DESC, name ASC",
             'post_number'       => POST_NUMBER,
             'number_link'       => NUMBER_LINKS
         ]);
@@ -79,6 +79,7 @@ class BussinessControllerShowAll extends BussinessController
                 'bussiness'               => $this->dataBussiness['items'],
                 'navigation'              => $this->dataBussiness['navigation'],               
                 'uri'                     => '/bussiness/page/',
+                'add'                     => '/bussiness/add/',  
                 'show_block_admin'        => $this->showBlockadmin,
                 'show_block_moderator'    => $this->showBlockmoderator,
                 'message'                 => $this->messageEmpty

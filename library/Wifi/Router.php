@@ -35,6 +35,7 @@ class Router {
                    $this->get('/points/show/id/{id}[/[page/{page}[/]]]',    '\Controller\BussinessControllerShowPoint:execute')->setName('bussiness_point');
                    $this->get('/edit/id/{id}',                              '\Controller\BussinessControllerEdit:execute')    ->setName('edit_bussiness_show');
                    $this->post('/edit[/]',                                  '\Controller\BussinessControllerEdit:edit')       ->setName('edit_bussiness');
+                   $this->map(['GET', 'POST'], '/add[/]',                   '\Controller\BussinessControllerAdd:execute')     ->setName('add_bussiness');
                 });
 
                 //Группа маршрутов для точек доступа

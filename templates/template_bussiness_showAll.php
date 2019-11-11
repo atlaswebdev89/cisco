@@ -12,6 +12,13 @@
                     <h2 class ="dark text-center" ><span style="color: #ffefef; font-family: 'Amatic SC', cursive !important;">{{message}}</span></h2>
                 </div>
                 {% endif %}
+                
+                {% if show_block_moderator  %}
+                <div class="text-center">
+                    <a  class="btn btn-success btn-sm" href="{{add}}">Добавить организацию</a>  
+                </div>
+                                                       
+                {% endif %}
 
 
                 {% for data in bussiness %}

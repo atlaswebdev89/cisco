@@ -631,6 +631,18 @@ public function getRolePermisions () {
         $result = $this->driver->query($sql, $type);
         return $result;
     }
+    
+    //Добавить новую организацию в бд
+    public function addBus (array $data) {
+     $type = "insert";
+     $sql = "INSERT INTO `".PREF."business` SET `name` =:name, `description` =:description";
+        $data_array = array(
+            'name' => $data['name'],
+            'description' => $data['description']
+        );
+     $result =  $this->driver->query($sql, $type, $data_array); 
+     return $result;  
+    }
 
 
 
