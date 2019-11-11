@@ -50,7 +50,7 @@ abstract class MainController {
     
     public function clear_str($str) {
         $str =  strip_tags(trim($str));
-        return htmlspecialchars($str);
+        return ($str);
     }
 
     //Должны быть переопределены в дочерних классах
