@@ -8,28 +8,25 @@
                     <input class="btn-info btn text-center" type="button" onclick="history.back();" value="Назад"/><br />    
                 </p>
                 
-                <form class="compressed-box-50 m-auto point-redactor text-center dark"  method="POST">
-                                                          
-                    <div class="form-group">
-                            <div class ="input-group col-md-12">
-                                <label for="name" style="font-weight:inherit !important;">Название организации</label>
-                                <input id = "name" type="text" class="form-control" placeholder="название организации" name="name" required>
+                <form class="compressed-box-50 m-auto point-redactor text-center dark"  action="" method="POST">
+                        <div class="form-group">
+                                <div class ="input-group col-md-12">
+                                    <label for="name" style="font-weight:inherit !important;">Название организации</label>
+                                    <input id = "name" type="text" class="form-control" placeholder="название организации" value ="{{name}}" name="name" required>
+                                </div>
                             </div>
-                        </div>
-                    
-                    <div class="form-group">
-                            <div class ="input-group col-md-12">
-                                <label for="color" style="font-weight:inherit !important;">Описание организации</label>
-                                <input class="form-control" type="text" id="description" name="description" placeholder="описание организации" />
-                            </div>
-                    </div>
-                    
-                    <input type="submit" name="button-add-bussiness"  value ="добавить" class="btn btn-block btn-success " id="button-add-bussiness">
-                        <div class="form-group response_order">
-                            
-                            <p style="text-align: center; color: #ffc5c5;">{{message_error}}</p>
-                        </div>                  
 
+                        <div class="form-group">
+                                <div class ="input-group col-md-12">
+                                    <label for="color" style="font-weight:inherit !important;">Описание организации</label>
+                                    <input class="form-control" type="text" id="description" name="description"  value="{{description}}" placeholder="описание организации" />
+                                </div>
+                        </div>
+
+                        <input type="submit" name="button-add-bussiness"  value ="добавить" class="btn btn-block btn-success " id="button-add-bussiness">
+                            <div class="form-group response_order">
+                                <p style="text-align: center; color: #ffc5c5;">{{message_error}}</p>
+                            </div>
                 </form>
 
             </div>

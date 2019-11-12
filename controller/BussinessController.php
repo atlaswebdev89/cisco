@@ -15,7 +15,6 @@ class BussinessController extends DisplayController
     protected function display($request, $response, $args) {
         parent::display($request, $response, $args);
     }
-
     protected function getGallery() {
         return true;
     }
