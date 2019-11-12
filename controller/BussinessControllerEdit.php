@@ -36,7 +36,6 @@ class BussinessControllerEdit extends BussinessController
         foreach ($posts_data as &$data) {
             $data = $this->clear_str($data);
         }
-
         //Изменение данных организации в БД
         if ($this->model->editBussinessdata($posts_data)){
             return TRUE;

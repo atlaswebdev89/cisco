@@ -613,12 +613,13 @@ public function getRolePermisions () {
         //Изменение данных организации  в БД
     public function editBussinessdata (array $data) {
             $type = "count";
-            $sql = "UPDATE `".PREF."business` set `name` = :name, `placemark_color` =:color "
+            $sql = "UPDATE `".PREF."business` set `name` = :name, `placemark_color` =:color, `description` =:description "
                 . " WHERE `".PREF."business`.`id`= :id";
                 $data_array = array(
                     'name' => $data['name'],
                     'color' => $data['color'],
-                    'id' => $data['id']
+                    'id' => $data['id'],
+                    'description' => $data['description']
                 );
             $result =  $this->driver->query($sql, $type, $data_array);
         return $result;
@@ -635,10 +636,11 @@ public function getRolePermisions () {
     //Добавить новую организацию в бд
     public function addBus (array $data) {
      $type = "insert";
-     $sql = "INSERT INTO `".PREF."business` SET `name` =:name, `description` =:description";
+     $sql = "INSERT INTO `".PREF."business` SET `name` =:name, `description` =:description, `placemark_color` =:placemark_color";
         $data_array = array(
             'name' => $data['name'],
-            'description' => $data['description']
+            'description' => $data['description'],
+            'placemark_color' => $data['color']
         );
      $result =  $this->driver->query($sql, $type, $data_array); 
      return $result;  

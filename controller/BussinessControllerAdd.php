@@ -14,6 +14,7 @@ class BussinessControllerAdd extends BussinessController{
                         $_SESSION['message_error'] = "Ошибка добавления. Попробуйте ещё раз";
                         $_SESSION['nameBusiness'] = $this->dataBus['name'];
                         $_SESSION['busDescription'] = $this->dataBus['description'];
+                        $_SESSION['placemark_color'] =$this->dataBus['color'];
                     return $response->withRedirect($uri = $request->getUri()->getpath());
                 };
           }          
@@ -22,6 +23,7 @@ class BussinessControllerAdd extends BussinessController{
 
     protected function display($request, $response, $args) {        
         $this->title .= 'NewBussiness';
+        $this->page_script = $this->getScripts();
         $this->mainbar = $this->mainBar();
         $this->deleSessionBus();
         parent::display($request, $response, $args);
@@ -33,7 +35,8 @@ class BussinessControllerAdd extends BussinessController{
             [
                 'message_error' =>$this->session ['message_error'],
                 'name' => $this->session['nameBusiness'],
-                'description' => $this->session['busDescription']
+                'description' => $this->session['busDescription'],
+                'placemark_color' => $this->session['placemark_color']
             ]
         );
     }
@@ -53,9 +56,17 @@ class BussinessControllerAdd extends BussinessController{
             }           
     }
 
+    protected function getScripts()
+    {
+        return [
+            '/js/jscolor.js'
+        ];
+    }
+
     protected function deleSessionBus () {
         unset($_SESSION['message_error']);
         unset($_SESSION['nameBusiness']);
         unset($_SESSION['busDescription']);
+        unset($_SESSION['placemark_color']);
     }
 }

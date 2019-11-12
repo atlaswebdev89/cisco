@@ -18,11 +18,17 @@
 
                         <div class="form-group">
                                 <div class ="input-group col-md-12">
-                                    <label for="color" style="font-weight:inherit !important;">Описание организации</label>
+                                    <label for="description" style="font-weight:inherit !important;">Описание организации</label>
                                     <input class="form-control" type="text" id="description" name="description"  value="{{description}}" placeholder="описание организации" />
                                 </div>
                         </div>
 
+                        <div class="form-group">
+                            <div class ="input-group col-md-12">
+                                <label for="color" style="font-weight:inherit !important;">Цвет метки на карте</label>
+                                <input class="form-control jscolor {hash:true}" type="text" id="color" name="color"  value="{{placemark_color}}" placeholder="цвет метки на карте" />
+                            </div>
+                        </div>
                         <input type="submit" name="button-add-bussiness"  value ="добавить" class="btn btn-block btn-success " id="button-add-bussiness">
                             <div class="form-group response_order">
                                 <p style="text-align: center; color: #ffc5c5;">{{message_error}}</p>

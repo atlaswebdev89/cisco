@@ -15,6 +15,14 @@
                                 <input id = "name"  value ="{{point.name}}" type="text" class="form-control" placeholder="название организации" name="name"  required>
                             </div>
                         </div>
+
+                    <div class="form-group">
+                        <div class ="input-group col-md-12">
+                            <label for="description" style="font-weight:inherit !important;">Описание организации</label>
+                            <input class="form-control" type="text" id="description" name="description"  value="{{point.description}}" placeholder="описание организации" />
+                        </div>
+                    </div>
+
                     <div class="form-group">
                             <div class ="input-group col-md-12">
                                 <label for="color" style="font-weight:inherit !important;">Цвет метки на карте</label>
