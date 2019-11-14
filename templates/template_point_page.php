@@ -20,10 +20,10 @@
                             <div class="col-md-2">
                                 <div ><i class="icon-podcast icon-position-left" ></i><a href="/point/show/id/{{data.id}}" style="color: #3dff53" >{{data.ip}}</a></div>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-3">
                                 <div><i class="icon-location22 icon-position-left" ></i>{{data.address}}</div>
                             </div>
-                            <div class="col-md-2">
+                            <div class="col-md-3">
                                 {% if data.name %}
                                         <div><i class="icon-library3 icon-position-left"></i><a href="#">{{data.name}}</a></div>
                                 {% else %}
@@ -45,7 +45,6 @@
                         </div>
                     </div>
                 {% endfor %}
-
             </div>
 
         </div>
