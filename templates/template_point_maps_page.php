@@ -5,16 +5,16 @@
                 <h2 class="dark text-center" style="" data-aos="zoom-in" data-aos-easing="none" data-aos-duration="500" data-aos-delay="0">
                     <strong>Access Point</strong> Maps
                 </h2>
-                <div id="cityShop" class="text-center" >
-                    <label for="points" class="dark">Группы точек</label>:
-                    <select name="points" id="points"></select>                   
+                <div class="col-md-4 col-xs-12 text-center col-md-offset-4" style="margin-bottom: 10px;">
+                    <label for="points" class="dark">Группы точек</label>
+                    <select  name="points" id="points" class="form-control"></select>
                 </div>
-                    <div id="map" class="" ></div>
+                <div class="clearfix"></div>
+                <div id="map"></div>
             </div>
         </div>
     </div>
     <div class="bg parallax-bg skrollable-after" data-top-bottom="transform:translate3d(0px, 25%, 0px)" data-bottom-top="transform:translate3d(0px, -25%, 0px)"></div>
-
     <script>
         var dataPoint = {{data | raw }};
         var longitude = {{longitude}};
@@ -22,6 +22,5 @@
         var zoom = {{zoom}};
         var idGroupRequest = '{{id_bussiness}}';
     </script>
-
 </header>
 
