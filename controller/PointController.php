@@ -99,10 +99,10 @@ class PointController extends DisplayController {
             } else {
                 $posts_data['address'] = (int)$getDataAddress[0]['id'];
             }
+        }else {
+            $posts_data['address'] = NULL;
         };
-
         return $posts_data;
-
     }
 
 

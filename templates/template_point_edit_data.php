@@ -105,7 +105,7 @@
                         <div class="form-group ">
                             <div class ="input-group col-md-12">
                                 <label for="mac_address">MAC адрес точки</label>
-                                   <input type="text" class="form-control"  value ={{point.mac}} placeholder="Mac-адрес" name="mac_address" id="mac_address" required>
+                                   <input type="text" class="form-control"  value ={{point.mac}} placeholder="Mac-адрес" name="mac_address" id="mac_address">
                             </div>
                         </div>
 
@@ -119,7 +119,7 @@
                         <div class="form-group">
                             <div class ="input-group col-md-12">
                                 <label for="suggest">Адрес установки</label>
-                                <input type="text" class="form-control" name ="address" id="suggest" value = "{{point.address}}" required>
+                                <input type="text" class="form-control" name ="address" id="suggest" value = "{{point.address}}">
                             </div>
                             <button type="button" id="button-maps" >Показать на карте</button>
                         </div>
@@ -127,13 +127,13 @@
                         <div class="form-group col-md-6 my-class-padding">
                             <div class ="input-group ">
                                 <label for="latitude">Координаты, широта</label>
-                                <input disabled="disabled" type="text" class="form-control" id="latitude" name = "latitude"  value = "{{point.latitude}}"required>
+                                <input disabled="disabled" type="text" class="form-control" id="latitude" name = "latitude"  value = "{{point.latitude}}">
                             </div>
                         </div>
                         <div class="form-group col-md-6 my-class-padding">
                             <div class ="input-group ">
                                 <label for="longitude">Координаты, долгота</label>
-                                <input disabled="disabled" type="text" class="form-control" id="longitude" name ="longitude" value = "{{point.longitude}}"required>
+                                <input disabled="disabled" type="text" class="form-control" id="longitude" name ="longitude" value = "{{point.longitude}}">
                             </div>
 
                         </div>
@@ -144,7 +144,7 @@
                         <div class="form-group">
                             <div class ="input-group col-md-12">
                                 <label for="set_place">Место установки</label>
-                                <input type="text" class="form-control" placeholder="Место установки" name="set_place" id="set_place" value = "{{point.set_place}}"required>
+                                <input type="text" class="form-control" placeholder="Место установки" name="set_place" id="set_place" value = "{{point.set_place}}">
                             </div>
                         </div>
                         <div class="form-group">

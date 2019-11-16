@@ -472,6 +472,7 @@ public function getRolePermisions () {
             ."LEFT JOIN `".PREF."business` ON `".PREF."business`.`id` =`".PREF."point_data`.`id_business`"
             ."LEFT JOIN `".PREF."point_ssid` ON `cisco_point_ssid`.`id` =`".PREF."point_data`.`id_ssid`"
             ."LEFT JOIN `".PREF."points_model` on `".PREF."points_model`.`id` =  `".PREF."point_data`.`id_model`"
+            ."WHERE `".PREF."point_data`.`longitude` > 0 and `".PREF."point_data`.`latitude` > 0 "
             ."ORDER BY `installation_date` DESC";
 
         $result =  $this->driver->query($sql, $type);

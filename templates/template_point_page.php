@@ -21,7 +21,11 @@
                                 <div ><i class="icon-podcast icon-position-left" ></i><a href="/point/show/id/{{data.id}}" style="color: #3dff53" >{{data.ip}}</a></div>
                             </div>
                             <div class="col-md-3">
-                                <div><i class="icon-location22 icon-position-left" ></i>{{data.address}}</div>
+                                {% if data.address %}
+                                    <div><i class="icon-location22 icon-position-left" ></i>{{data.address}}</div>
+                                {% else %}
+                                <div><i class="icon-location22 icon-position-left" ></i><span  style="color: #ff7d7d;">Адрес не указан</span></div>
+                                {% endif %}
                             </div>
                             <div class="col-md-3">
                                 {% if data.name %}

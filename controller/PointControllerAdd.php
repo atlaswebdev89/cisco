@@ -108,7 +108,7 @@ class PointControllerAdd extends PointController {
             $posts_data = $this->CheckTypeGetId($posts_data);
             //Формирование массива
             $data = $this->getdatainBd($posts_data);
-            
+          
             //Добавление данных точки в БД 
             $idData = $this->model->adddatapointBd($data);
             return $idData;

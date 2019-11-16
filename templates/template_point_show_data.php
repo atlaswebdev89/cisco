@@ -84,7 +84,7 @@
                             {%endfor%}  
                         </tbody>
                  </table>
-               <div class="text-center dark">
+               <div id ="allMapsButton" class="text-center dark">
                    <span><a href="{{maps}}">Показать на общей карте</a></span>
                </div>
                      <div id="map" ></div>

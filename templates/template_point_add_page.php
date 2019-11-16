@@ -78,7 +78,7 @@
                           <div class="form-group ">
                                    <div class ="input-group col-md-12">
                                        <label for="mac_address">MAC адрес точки</label>
-                                       <input type="text" class="form-control" placeholder="Mac-адрес" name="mac_address" id="mac_address" required>
+                                       <input type="text" class="form-control" placeholder="Mac-адрес" name="mac_address" id="mac_address">
                                    </div>
                            </div>
 
@@ -91,7 +91,7 @@
                             <div class="form-group">
                                    <div class ="input-group col-md-12 ">
                                        <label for="suggest">Адрес установки</label>
-                                       <input type="text" class="form-control" name ="address" id="suggest" required>
+                                       <input type="text" class="form-control" name ="address" id="suggest" >
                                    </div>
                                 <button type="button" id="button-maps" disabled="disabled">Показать на карте</button>
                            </div>
@@ -99,13 +99,13 @@
                         <div class="form-group col-md-6 my-class-padding">
                             <div class ="input-group ">
                                 <label for="latitude">Координаты, широта</label>
-                                    <input disabled ="disabled" type="text" class="form-control" id="latitude" name = "latitude" required>
+                                    <input disabled ="disabled" type="text" class="form-control" id="latitude" name = "latitude" >
                               </div>
                         </div>
                         <div class="form-group col-md-6 my-class-padding">
                              <div class ="input-group ">
                                  <label for="longitude">Координаты, долгота</label>
-                                    <input disabled ="disabled" type="text" class="form-control" id="longitude" name ="longitude" required>
+                                    <input disabled ="disabled" type="text" class="form-control" id="longitude" name ="longitude" >
                             </div>
 
                         </div>
