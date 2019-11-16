@@ -42,6 +42,7 @@ class PointControllerMaps extends PointController
         $this->title .= 'Maps';
         //Подключение необходимых скриптов
         $this->page_script = $this->getScripts();
+        $this->page_style = $this->getStyles();
         //Получение данных всех точек
         $this->dataPointAll = $this->getDataPoint();
        //Получение списка организаций для формирования коллекций (maps API yandex)
@@ -69,7 +70,16 @@ class PointControllerMaps extends PointController
     protected function getScripts () {
         return [
             'https://api-maps.yandex.ru/2.1/?apikey=e47ca267-409d-4f76-b09a-2c71c39d6c14&lang=ru_RU',
-            '/js/maps-show-collections.js'
+            '/js/maps-show-collections.js',
+            'https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.10/js/select2.min.js',
+            '/js/select2Maps.js'
+        ];
+    }
+
+    protected function getStyles()
+    {
+        return [
+            'https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.10/css/select2.min.css'
         ];
     }
 
