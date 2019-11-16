@@ -510,7 +510,13 @@ public function getRolePermisions () {
         $result =  $this->driver->query($sql, $type, $data_array);
         return $result;
     }
-    
+
+    public function getCountPoint () {
+        $type = "arraydata";
+            $sql = "SELECT COUNT(*) as count FROM `".PREF."point_data`";
+            $result =  $this->driver->query($sql, $type);
+        return $result;
+    }
                                                 //ФУНКЦИИ ПОИСКА ПО БАЗЕ ДАННЫХ
 /*------------------------------------------------------------------------------------------------------------*/  
 
@@ -647,6 +653,13 @@ public function getRolePermisions () {
      return $result;  
     }
 
+    //Получение количества организаций
+    public function getCountBus () {
+        $type = "arraydata";
+        $sql = "SELECT COUNT(*) as count FROM `".PREF."business`";
+        $result =  $this->driver->query($sql, $type);
+        return $result;
+    }
 
 
 
