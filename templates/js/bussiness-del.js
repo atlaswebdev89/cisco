@@ -89,8 +89,8 @@ $(document).ready(function() {
 
     function ConfirmSweet(nameFunc, button, id) {
         swal({
-            title: "Удалить точку?",
-            text: "Подтвертить удаление точки Cisco!",
+            title: "Удалить организацию?",
+            text: "Подтвертить удаление организации!",
             icon: "warning",
             buttons: ["Отменить", "Удалить!"],
             dangerMode: true,

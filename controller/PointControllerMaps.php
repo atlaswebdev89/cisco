@@ -94,18 +94,17 @@ class PointControllerMaps extends PointController
     protected function getCollections($allData, $Bussines) {
         $array = array();
         $i=0;
-        for ($i; $i <(count($Bussines)); $i++){
 
-                $array[$i]['id'] = $Bussines[$i]['id'];
-                $array[$i]['name'] = $Bussines[$i]['name'];
-                $array[$i]['color'] = $Bussines[$i]['placemark_color'];
+            for ($i; $i < (count($Bussines)); $i++) {
+                    $array[$i]['id'] = $Bussines[$i]['id'];
+                    $array[$i]['name'] = $Bussines[$i]['name'];
+                    $array[$i]['color'] = $Bussines[$i]['placemark_color'];
 
-            foreach ($allData as $key=>$item) {
-                if ($array[$i]['name'] == $item['name'])
-                {
-                    $array[$i]['items'][] = $item;
-                }
-            }
+                    foreach ($allData as $key => $item) {
+                        if ($array[$i]['name'] == $item['name'] && $item['latitude'] >0 && $item['longitude'] >0 ) {
+                            $array[$i]['items'][] = $item;
+                        }
+                    }
         }
 
         $json = json_encode($array);
