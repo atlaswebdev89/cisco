@@ -60,6 +60,19 @@ function init () {
                 clusterer.add(geoobjects[i]);
         }
 }
+    var searchControl = new ymaps.control.SearchControl({
+        options: {
+            provider: 'yandex#search'
+        }
+    });
+    map.controls.add(searchControl);
+
+    // масштабирование карты, чтобы влазили все объекты
+    if(zoom < 19) {
+        map.setBounds(map.geoObjects.getBounds(), {
+            checkZoomRange: true
+        });
+    }
     
     if(idGroupRequest) {
         clusterer.removeAll();
@@ -74,8 +87,7 @@ $(document).on('change', $('select#points'), function () {
     var PointGroupId = $('select#points').val();  
     getMarksGroups(PointGroupId);
 });
- 
- 
+
  //Функция отображения выбранной группы меток или группы переданой в запросе
  function getMarksGroups (id) {
       if (id=='all') {
@@ -86,25 +98,6 @@ $(document).on('change', $('select#points'), function () {
               clusterer.add(geoobjects[id]);
    }
    // Масштабируем и выравниваем карту так, чтобы были видны метки для выбранной организации
-    map.setBounds(map.geoObjects.getBounds(), {checkZoomRange:true}).then(function(){
-        if(myMap.getZoom() > 15) myMap.setZoom(15); // Если значение zoom превышает 15, то устанавливаем 15.
-    });
-     
+    map.setBounds(map.geoObjects.getBounds(), {checkZoomRange:true});
  }
-    
-    var searchControl = new ymaps.control.SearchControl({
-        options: {
-            provider: 'yandex#search'
-        }
-    });
-    map.controls.add(searchControl);
-  
-    // масштабирование карты, чтобы влазили все объекты
-    if(zoom < 19 && map.geoObjects>0) {
-        map.setBounds(map.geoObjects.getBounds(), {
-            checkZoomRange: true
-        }).then(function () {
-            if (map.getZoom() > 15) map.setZoom(15); // Если значение zoom превышает 15, то устанавливаем 15.
-        });
-    }
 }

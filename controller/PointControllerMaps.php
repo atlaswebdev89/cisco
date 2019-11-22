@@ -101,7 +101,7 @@ class PointControllerMaps extends PointController
                     $array[$i]['color'] = $Bussines[$i]['placemark_color'];
 
                     foreach ($allData as $key => $item) {
-                        if ($array[$i]['name'] == $item['name'] && $item['latitude'] >0 && $item['longitude'] >0 ) {
+                        if ($array[$i]['name'] == $item['name']) {
                             $array[$i]['items'][] = $item;
                         }
                     }
