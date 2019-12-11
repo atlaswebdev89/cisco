@@ -24,12 +24,20 @@
                 </div>
 
                 <div id="navbar" role='navigation' class="navbar-collapse collapse" aria-expanded="false" style="height: 0px;">
+
                     <button class="btn-info btn btn-sm navbar-btn navbar-right"  id="logout_button"><i class="icon-user icon-position-left"></i>
                         <span style="">Выход</span>
                     </button>
 
+                    <a href = "/reports/">
+                        <button class="btn-info btn btn-sm navbar-btn navbar-right" >
+                            <span style="">Скачать файл</span>
+                        </button>
+                    </a>
+
                     <ul class="nav navbar-nav navbar-right" style="">
                         <li><a href="/"><i class="icon-home7 icon-position-right"></i> <span>Home</span></a></li>
+
                         {% block menu %}
                         {% endblock %}
                     </ul>
