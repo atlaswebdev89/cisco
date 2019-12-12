@@ -6,7 +6,22 @@ namespace Controller;
 
 class ReportsController extends DisplayController
 {
+    protected $report;
+    public function __construct($container) {
+        parent::__construct($container);
+        //Объект класса пагинации
+        $this->report = $container->reports;
+    }
+
     public function execute ($request, $response, $args) {
+
+        return $this->report->getExcel($request, $response, $args);
+
+
+
+        exit;
+
+
 
         $array = array(
             '1' => '123 1',

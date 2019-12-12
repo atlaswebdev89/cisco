@@ -126,6 +126,12 @@ $container['pager'] = function ($container){
   return new \Wifi\Pager($container['driver']);
 };
 
+
+//Класс для формирование отчетов
+$container['reports'] = function ($container){
+    return new \Wifi\ExcelReports($container['driver']);
+};
+
 //Обработчик 404 ошибки
 $container['notFoundHandler'] = function ($container) {
    return function ($request, $response) use ($container) {
