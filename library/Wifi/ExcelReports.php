@@ -6,11 +6,13 @@ namespace Wifi;
 
 class ExcelReports
 {
-    protected $driver;
-
-    public function __construct($driver)
+    protected $model;
+    protected $ArrayData = [];
+    protected $garant;
+    public function __construct($model)
     {
-        $this->driver = $driver;
+        $this->model = $model;
+        $this->garant = '100';
     }
 
     public  function getExcel ($request, $response, $args) {
@@ -31,28 +33,12 @@ class ExcelReports
             $aSheet->getDefaultStyle()->getFont()->setName('Times New Roman');
             // Размер шрифта 18
             $aSheet->getDefaultStyle()->getFont()->setSize(12);
-            
-            //Границы для таблицы
-            $border = array(
-                                'borders'=>array(
-                                        'outline' => array(
-                                                'style' => \PHPExcel_Style_Border::BORDER_THICK,
-                                                'color' => array('rgb' => '000000')
-                                        ),
-                                        'allborders' => array(
-                                                'style' => \PHPExcel_Style_Border::BORDER_THIN,
-                                                'color' => array('rgb' => '000000')
-                                        )
-                                )
-                        );
-            $aSheet->getStyle("A2:H3")->applyFromArray($border);
+
+
             
             //Жирный 
             $aSheet->getStyle("A1")->getFont()->setBold(true);
-            $aSheet->getStyle("A2:H3")->getAlignment()->setWrapText(true);
 
-            // Выравнивание по горизонтале и вертикали.  По центру
-            $aSheet->getStyle("A1:H3")->getAlignment()->setHorizontal(\PHPExcel_Style_Alignment::HORIZONTAL_CENTER)->setVertical(\PHPExcel_Style_Alignment::VERTICAL_CENTER);
             
             //Высота строк
             $aSheet->getRowDimension('1')->setRowHeight(30);
@@ -115,7 +101,86 @@ class ExcelReports
           
             // Нижний колонтитул
             $aSheet->getHeaderFooter()->setOddFooter('&L&B CiscoWifi &R Страница &P из &N');
-            //--------------------------------------------------------------// 
+            //--------------------------------------------------------------//
+
+            //Получаем данные из БД по всем точкам и формируем массив для отчета
+
+            //Список всех организаций
+            $bussinnes = $this->model->getBusinessForSelect();
+            //Получение всех точек для отчета
+            $points = $this->model->getDataPoints();
+
+            foreach ($bussinnes as $key=>$item) {
+                $j=0;
+                foreach ($points as $point) {
+                    if ($point['id_business'] == $item['id']){
+                            $this->ArrayData[$key][$j]['point'] = $item['name'].'  '.$point['address'];
+                            $this->ArrayData[$key][$j]['speed'] = $point['speed_download'].'/'.$point['speed_upload'];
+                            $j++;
+                    }
+                }
+            }
+
+
+            $startLine = 4;  $i = 1;
+            foreach ($this->ArrayData as $items){
+                $j =0;
+                foreach ($items as $item) {
+                        $aSheet->setCellValue("A".$startLine, $i);
+                        $aSheet->setCellValue("B".$startLine, $item['point']);
+                        $aSheet->setCellValue("C".$startLine, $item['speed']);
+                        $i++; $j++;
+                        $startLine++;
+                }
+                $start = $startLine-$j;
+                $aSheet->setCellValue("H".$start, $this->garant);
+                //Объединение ячеек при двух и более точек одной фирмы
+                if ($j > 1) {
+                    $aSheet->mergeCells('H'.$start.':H'.($startLine-1));
+                }
+            }
+            $endLine = $startLine -1;
+
+            //Границы для таблицы
+            $border = array(
+                'borders'=>array(
+                    'outline' => array(
+                        'style' => \PHPExcel_Style_Border::BORDER_MEDIUM,
+                        'color' => array('rgb' => '000000')
+                    ),
+                    'allborders' => array(
+                        'style' => \PHPExcel_Style_Border::BORDER_THIN,
+                        'color' => array('rgb' => '000000')
+                    )
+                )
+            );
+
+            $aSheet->getStyle("A2:H".$endLine)->applyFromArray($border);
+            $aSheet->getStyle("A2:H".$endLine)->getAlignment()->setWrapText(true);
+            $aSheet->getStyle("A4:H".$endLine)->getFont()->setSize(10);
+
+        // Выравнивание по горизонтале и вертикали.  По центру
+            $aSheet->getStyle("A1:H".$endLine)->getAlignment()->setHorizontal(\PHPExcel_Style_Alignment::HORIZONTAL_CENTER)->setVertical(\PHPExcel_Style_Alignment::VERTICAL_CENTER);
+            $aSheet->getStyle("B4:B".$endLine)->getAlignment()->setHorizontal(\PHPExcel_Style_Alignment::HORIZONTAL_LEFT)->setVertical(\PHPExcel_Style_Alignment::VERTICAL_CENTER);
+            //Жирный
+            $aSheet->getStyle("B4:H".$endLine)->getFont()->setBold(true);
+
+
+            $aSheet->getStyle("A".($endLine+1))->getFont()->setBold(true);
+            $aSheet->setCellValue("A".($endLine+1),'Начальник ЛТЦ  _____________ А. М. Гречный');
+            $aSheet->mergeCells('A'.($endLine+1).':B'.($endLine+1));
+            $aSheet->getRowDimension(($endLine+1))->setRowHeight(20);
+
+            $aSheet->getStyle("A".($endLine+3))->getFont()->setBold(true);
+            $aSheet->setCellValue("A".($endLine+3),'Отчет подготовил____________  Д.В.  Дорошук  тел. 8(0162)213100');
+            $aSheet->mergeCells('A'.($endLine+3).':B'.($endLine+3));
+            $aSheet->getRowDimension(($endLine+3))->setRowHeight(20);
+
+
+
+
+
+
             
             $objWriter = \PHPExcel_IOFactory::createWriter($xls, 'Excel5');
             $objWriter->save('php://output');

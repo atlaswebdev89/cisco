@@ -8,8 +8,6 @@ class ReportsController extends DisplayController
 {
     protected $report;
     public function __construct($container) {
-        parent::__construct($container);
-        //Объект класса пагинации
         $this->report = $container->reports;
     }
 

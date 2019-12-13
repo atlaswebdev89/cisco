@@ -129,7 +129,7 @@ $container['pager'] = function ($container){
 
 //Класс для формирование отчетов
 $container['reports'] = function ($container){
-    return new \Wifi\ExcelReports($container['driver']);
+    return new \Wifi\ExcelReports($container['model']);
 };
 
 //Обработчик 404 ошибки
