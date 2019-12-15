@@ -33,18 +33,15 @@ class ExcelReports
             $aSheet->getDefaultStyle()->getFont()->setName('Times New Roman');
             // Размер шрифта 18
             $aSheet->getDefaultStyle()->getFont()->setSize(12);
-
-
-            
+        
             //Жирный 
             $aSheet->getStyle("A1")->getFont()->setBold(true);
-
-            
+           
             //Высота строк
             $aSheet->getRowDimension('1')->setRowHeight(30);
             $aSheet->getRowDimension('2')->setRowHeight(70);
             $aSheet->getRowDimension('3')->setRowHeight(20);
-            
+                     
             $aSheet->setCellValue("A2",' № п/п');  
             $aSheet->getColumnDimension('A')->setWidth(5); 
             $aSheet->mergeCells('A2:A3');
@@ -52,7 +49,6 @@ class ExcelReports
             $aSheet->setCellValue("B2",'Заказчик точек доступа, N точек');
             $aSheet->getColumnDimension('B')->setWidth(70);         
             $aSheet->mergeCells('B2:B3');
-
             
             $aSheet->getColumnDimension('C')->setWidth(12);           
                 $aSheet->setCellValue("C2",'Пропускная способность, Рi');
@@ -65,24 +61,15 @@ class ExcelReports
             $aSheet->getColumnDimension('E')->setWidth(10);
             $aSheet->mergeCells('E2:G2');
 
-            
             $aSheet->getStyle("E3:G3")->getFont()->setBold(true);
                 $aSheet->setCellValue("E3",'N');          
                 $aSheet->setCellValue("F3",'N заяв.');                               
                 $aSheet->setCellValue("G3",'К вос.');   
-            
-           
+                      
             $aSheet->setCellValue("H2", 'Коэффициент готовности соединения с сетью Интернет (для  заказчика), Кг (%)');
                 $aSheet->getColumnDimension('H')->setWidth(20);
                 $aSheet->mergeCells('H2:H3');
-            
-        
-            
-            // Записываем данные в ячейку
-            $date = date('d-m-Y');
-
-
-
+    
             //Параметры для ПЕЧАТИ
             // Формат
             $aSheet->getPageSetup()->SetPaperSize(\PHPExcel_Worksheet_PageSetup::PAPERSIZE_A4);
@@ -110,6 +97,7 @@ class ExcelReports
             //Получение всех точек для отчета
             $points = $this->model->getDataPoints();
 
+            //Формирование массива с данными точек. Массив содежржит массивы точек объединенных по организациям 
             foreach ($bussinnes as $key=>$item) {
                 $j=0;
                 foreach ($points as $point) {
@@ -120,16 +108,17 @@ class ExcelReports
                     }
                 }
             }
-
-
+            //Заполнение Excel документа данными точек с раннее сформированного массива
             $startLine = 4;  $i = 1;
-            foreach ($this->ArrayData as $items){
+            foreach ($this->ArrayData as $items){               
                 $j =0;
                 foreach ($items as $item) {
                         $aSheet->setCellValue("A".$startLine, $i);
                         $aSheet->setCellValue("B".$startLine, $item['point']);
                         $aSheet->setCellValue("C".$startLine, $item['speed']);
                         $i++; $j++;
+                        //Высота строки 
+                        $aSheet->getRowDimension($startLine)->setRowHeight(30);
                         $startLine++;
                 }
                 $start = $startLine-$j;
@@ -159,13 +148,13 @@ class ExcelReports
             $aSheet->getStyle("A2:H".$endLine)->getAlignment()->setWrapText(true);
             $aSheet->getStyle("A4:H".$endLine)->getFont()->setSize(10);
 
-        // Выравнивание по горизонтале и вертикали.  По центру
+            // Выравнивание по горизонтале и вертикали.  По центру
             $aSheet->getStyle("A1:H".$endLine)->getAlignment()->setHorizontal(\PHPExcel_Style_Alignment::HORIZONTAL_CENTER)->setVertical(\PHPExcel_Style_Alignment::VERTICAL_CENTER);
             $aSheet->getStyle("B4:B".$endLine)->getAlignment()->setHorizontal(\PHPExcel_Style_Alignment::HORIZONTAL_LEFT)->setVertical(\PHPExcel_Style_Alignment::VERTICAL_CENTER);
             //Жирный
             $aSheet->getStyle("B4:H".$endLine)->getFont()->setBold(true);
 
-
+            //Футер Excel документа 
             $aSheet->getStyle("A".($endLine+1))->getFont()->setBold(true);
             $aSheet->setCellValue("A".($endLine+1),'Начальник ЛТЦ  _____________ А. М. Гречный');
             $aSheet->mergeCells('A'.($endLine+1).':B'.($endLine+1));
@@ -175,13 +164,8 @@ class ExcelReports
             $aSheet->setCellValue("A".($endLine+3),'Отчет подготовил____________  Д.В.  Дорошук  тел. 8(0162)213100');
             $aSheet->mergeCells('A'.($endLine+3).':B'.($endLine+3));
             $aSheet->getRowDimension(($endLine+3))->setRowHeight(20);
-
-
-
-
-
-
             
+            //Сохранение Excel документа 
             $objWriter = \PHPExcel_IOFactory::createWriter($xls, 'Excel5');
             $objWriter->save('php://output');
 
