@@ -13,7 +13,6 @@ function init () {
     });
 
     var clusterer = new ymaps.Clusterer({
-        clusterDisableClickZoom: true,
         maxZoom: 13
     });
 
@@ -78,6 +77,7 @@ function init () {
         clusterer.removeAll();
         if (nameBussines[idGroupRequest]) {
             getMarksGroups(nameBussines[idGroupRequest]);
+            $("#points").select2().val(nameBussines[idGroupRequest]).trigger('change.select2');
         }
     }
 
@@ -87,6 +87,15 @@ $(document).on('change', $('select#points'), function () {
     var PointGroupId = $('select#points').val();  
     getMarksGroups(PointGroupId);
 });
+
+
+    $('#allPoint').click(function () {
+        getMarksGroups('all');
+        $('#points').val("all");
+        $("#points").select2().trigger('change');
+    })
+
+
 
  //Функция отображения выбранной группы меток или группы переданой в запросе
  function getMarksGroups (id) {

@@ -8,7 +8,11 @@
                 <div class="col-md-4 col-xs-12 text-center col-md-offset-4" style="margin-bottom: 10px;">
                     <label for="points" class="dark">Группы точек</label>
                     <select  name="points" id="points" class="form-control"></select>
+                    <button id = "allPoint" class="btn-success btn btn-sm navbar-btn">
+                        <span style="">Все точки</span>
+                    </button>
                 </div>
+
                 <div class="clearfix"></div>
                 <div id="map"></div>
             </div>
