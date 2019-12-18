@@ -40,6 +40,7 @@ class PointController extends DisplayController {
                 $array['id_address']         =           $data['address'];
                 $array['customer']           =           $data['customer'];
                 $array['schema']             =           $data['schema'];
+                $array['payment']            =           $data['payment'];
         return $array;
     }
 

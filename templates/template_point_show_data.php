@@ -28,6 +28,14 @@
                                           <th scope="row">Название сети (ssid)</th>
                                           <td>{{ data.ssid }}</td>
                                         </tr>
+                                          <tr>
+                                              <th scope="row">Оплата</th>
+                                              {% if data.payment == 'free' %}
+                                                    <td>Общедоступная точка wifi</td>
+                                              {% elseif data.payment == 'pay' %}
+                                                    <td>CiscoWifi в пользованиие</td>
+                                              {% endif %}
+                                          </tr>
                                         <tr>
                                             <tr>
                                           <th scope="row">MAC адрес</th>
@@ -58,8 +66,7 @@
                                           <th scope="row">Дата установки</th>
                                           <td>{{ data.installation_date }}</td>
                                         </tr>
-                                        
-                                          
+
                                         <tr>
                                           <th scope="row">Адрес установки</th>
                                           <td>{{ data.address }} </td>

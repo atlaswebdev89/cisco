@@ -61,6 +61,23 @@
                         </div>
 
                         <div class="form-group">
+                            <label>Оплата</label>
+                            <select class="form-control" title="Укажите тип оплаты" placeholder="оплата" name = "payment" required>
+                                <option value = '' disabled="disabled">Оплата</option>
+                                {% if point.payment == 'free' %}
+                                    <option selected="selected" value = "free">Общедоступная точка wifi</option>
+                                    <option value = "pay">CiscoWifi в пользованиие</option>
+                                {% elseif point.payment == 'pay' %}
+                                    <option value = "free">Общедоступная точка wifi</option>
+                                    <option selected="selected"  value = "pay">CiscoWifi в пользованиие</option>
+                                {% else %}
+                                    <option value = "pay">CiscoWifi в пользованиие</option>
+                                    <option value = "free">Общедоступная точка wifi</option>
+                                {% endif %}
+                            </select>
+                        </div>
+
+                        <div class="form-group">
                             <label>Модель точки</label>
                             <select class="my-select form-control"  name = "model-point" required>
                                 <option selected="selected" value = '' disabled="disabled">Модель точки</option>

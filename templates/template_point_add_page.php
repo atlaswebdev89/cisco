@@ -44,6 +44,14 @@
                                   <option value = "Внешняя">Внешняя</option>
                               </select>
                            </div>
+                          <div class="form-group">
+                              <label>Оплата</label>
+                              <select class="form-control" title="Укажите тип оплаты" placeholder="оплата" name = "payment" required>
+                                  <option selected="selected" value = '' disabled="disabled">Оплата</option>
+                                  <option value = "free">Общедоступная точка wifi</option>
+                                  <option value = "pay">CiscoWifi в пользованиие</option>
+                              </select>
+                          </div>
 
                           <div class="form-group">
                               <label>Модель точки</label>
