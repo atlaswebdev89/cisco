@@ -132,7 +132,7 @@ class SearchController extends DisplayController
         $request = $this->clear_str($data);
         $array = array();      
         //Получаем все точки в бд
-        $DataReturn = $this->model->getDataPoint();
+        $DataReturn = $this->model->searchDataPoint();
         
         //Проверяем совпадения строки запроса с полем ip 
         foreach ($DataReturn as $item) {

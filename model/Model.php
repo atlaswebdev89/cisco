@@ -461,6 +461,7 @@ public function getRolePermisions () {
     }
 
     //Получение всех данных точки из БД для формирования карты точек
+    //Получение всех данных точки из БД для которых указанна координа для карт Яндекс
     public function getDataPoint() {
         $type = "arraydata";
         $sql = "SELECT `".PREF."point_data`.`id`, INET_NTOA(`".PREF."point_data`.`ip`) as ip, `".PREF."point_data`.`latitude`, `".PREF."point_data`.`longitude`,"
@@ -474,6 +475,23 @@ public function getRolePermisions () {
             ."LEFT JOIN `".PREF."point_ssid` ON `cisco_point_ssid`.`id` =`".PREF."point_data`.`id_ssid`"
             ."LEFT JOIN `".PREF."points_model` on `".PREF."points_model`.`id` =  `".PREF."point_data`.`id_model`"
             ."WHERE `".PREF."point_data`.`longitude` > 0 and `".PREF."point_data`.`latitude` > 0 "
+            ."ORDER BY `installation_date` DESC";
+        $result =  $this->driver->query($sql, $type);
+        return $result;
+    }
+    //Получение всех данных точек для поиска
+    public function searchDataPoint () {
+        $type = "arraydata";
+        $sql = "SELECT `".PREF."point_data`.`id`, INET_NTOA(`".PREF."point_data`.`ip`) as ip, `".PREF."point_data`.`latitude`, `".PREF."point_data`.`longitude`,"
+            . "`".PREF."point_data`.`notice`, `".PREF."point_data`.`set_place`,"
+            . "`".PREF."point_data`.`speed_download`, `".PREF."point_data`.`speed_upload`, `".PREF."point_data`.`type`, `".PREF."point_data`.`mac`, "
+            . "`".PREF."point_data`.`installation_date`, `".PREF."point_address`.`address`, `".PREF."point_ssid`.`ssid`, `".PREF."points_model`.`model`, "
+            . "`".PREF."business`.`name`, `".PREF."business`.`placemark_color`"
+            . "FROM `".PREF."point_data` "
+            ."LEFT JOIN `".PREF."point_address` ON `".PREF."point_data`.`id_address` = `".PREF."point_address`.`id` "
+            ."LEFT JOIN `".PREF."business` ON `".PREF."business`.`id` =`".PREF."point_data`.`id_business`"
+            ."LEFT JOIN `".PREF."point_ssid` ON `cisco_point_ssid`.`id` =`".PREF."point_data`.`id_ssid`"
+            ."LEFT JOIN `".PREF."points_model` on `".PREF."points_model`.`id` =  `".PREF."point_data`.`id_model`"
             ."ORDER BY `installation_date` DESC";
         $result =  $this->driver->query($sql, $type);
         return $result;
