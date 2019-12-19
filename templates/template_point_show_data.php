@@ -34,6 +34,8 @@
                                                     <td>Общедоступная точка wifi</td>
                                               {% elseif data.payment == 'pay' %}
                                                     <td>CiscoWifi в пользованиие</td>
+                                              {% else %}
+                                                    <td></td>
                                               {% endif %}
                                           </tr>
                                         <tr>
@@ -70,6 +72,17 @@
                                         <tr>
                                           <th scope="row">Адрес установки</th>
                                           <td>{{ data.address }} </td>
+                                        </tr>
+                                        <tr>
+                                              <th scope="row">Обслуживание</th>
+                                              {% if data.responsibility == 'gts' %}
+                                                    <td>ГТС</td>
+                                              {% elseif data.responsibility == 'sts' %}
+                                                    <td>СТС</td>
+                                              {% else %}
+                                                    <td></td>
+                                              {% endif %}
+
                                         </tr>
                                         <tr>
                                           <th scope="row">Место установки</th>
