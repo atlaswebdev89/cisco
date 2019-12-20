@@ -17,7 +17,7 @@ function init () {
             'fullscreenControl',
             'zoomControl'
         ],
-        behaviors:['drag']
+        behaviors:['drag', 'multiTouch']
     });
 
         var myPlacemark = new ymaps.Placemark(point,

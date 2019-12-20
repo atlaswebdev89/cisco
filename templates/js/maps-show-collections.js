@@ -9,7 +9,7 @@ function init () {
             'fullscreenControl',
             'zoomControl'
         ],
-        behaviors: ['drag']
+        behaviors: ['drag', 'multiTouch']
     });
 
     var clusterer = new ymaps.Clusterer({
