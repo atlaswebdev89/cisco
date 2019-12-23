@@ -498,22 +498,6 @@ public function getRolePermisions () {
         return $result;
     }
 
-    //Функция получения всех точек для формирования отчета
-    public function getDataPoints () {
-        $type = "arraydata";
-        $sql = "SELECT `".PREF."point_data`.`id`, INET_NTOA(`".PREF."point_data`.`ip`) as ip, `".PREF."point_data`.`latitude`, `".PREF."point_data`.`longitude`,"
-            . "`".PREF."point_data`.`notice`, `".PREF."point_data`.`set_place`,"
-            . "`".PREF."point_data`.`speed_download`, `".PREF."point_data`.`speed_upload`, `".PREF."point_data`.`type`, `".PREF."point_data`.`mac`, "
-            . "`".PREF."point_data`.`installation_date`, `".PREF."point_address`.`address`,"
-            . "`".PREF."point_data`.`id_business`"
-            . "FROM `".PREF."point_data` "
-            ."LEFT JOIN `".PREF."point_address` ON `".PREF."point_data`.`id_address` = `".PREF."point_address`.`id` "
-            ."ORDER BY `installation_date` DESC";
-        $result =  $this->driver->query($sql, $type);
-        return $result;
-    }
-    
-   
     //Редактирование данных точки wifi в БД
     public function editdatapointBd (array $data) {
      $type = "count";
@@ -698,10 +682,27 @@ public function getRolePermisions () {
         return $result;
     }
 
-
-
-
     /*------------------------------------------------------------------------------------------------------------*/
 
-}
 
+    /*----------------------------------------------Функции для формирование Отчетов---------------------------------------------*/
+    //Функция получения всех точек для формирования отчета
+    public function getDataPoints () {
+        $type = "arraydata";
+        $sql = "SELECT `".PREF."point_data`.`id`, INET_NTOA(`".PREF."point_data`.`ip`) as ip, `".PREF."point_data`.`latitude`, `".PREF."point_data`.`longitude`,"
+            . "`".PREF."point_data`.`notice`, `".PREF."point_data`.`set_place`,"
+            . "`".PREF."point_data`.`speed_download`, `".PREF."point_data`.`speed_upload`, `".PREF."point_data`.`type`, `".PREF."point_data`.`mac`, "
+            . "`".PREF."point_data`.`installation_date`, `".PREF."point_address`.`address`,"
+            . "`".PREF."point_data`.`id_business`"
+            . "FROM `".PREF."point_data` "
+            ."LEFT JOIN `".PREF."point_address` ON `".PREF."point_data`.`id_address` = `".PREF."point_address`.`id` "
+            ."WHERE `".PREF."point_data`.`payment` !='free' AND  `".PREF."point_data`.`responsibility` !='sts' "
+            ."ORDER BY `installation_date` DESC";
+        $result =  $this->driver->query($sql, $type);
+        return $result;
+    }
+
+    /*----------------------------------------------------------------------------------------------------------------------------*/
+
+
+}

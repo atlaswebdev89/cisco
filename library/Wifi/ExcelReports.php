@@ -178,7 +178,7 @@ class ExcelReports
                             ->withHeader('Cache-Control', 'must-revalidate')
                             ->withHeader('Pragma', 'public')
                             //->withHeader('Content-Length', '1215152')
-                            ->withHeader('Content-Disposition', 'attachment; filename=123.xls');
+                            ->withHeader('Content-Disposition', 'attachment; filename=wifiReport.xls');
 
         }
 }
