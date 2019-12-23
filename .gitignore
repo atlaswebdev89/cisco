@@ -3,3 +3,8 @@
 .idea/
 /sessions/sess_*
 /vendor/
+/node_modules/
+npm-debug*
+package.json
+Gruntfile.js
+build/*
