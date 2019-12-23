@@ -17,7 +17,7 @@
                                                                 <a href="/point/" class="btn-success btn btn-block btn-lg" ><i class="icon-wifi icon-position-left"></i><span style="">Point CiscoWifi  ({{count_point}})</span></a>
                                                                 <a href ="/bussiness/" class="btn-success btn btn-block btn-lg"  ><i class="icon-apartment icon-position-left"></i><span style="">Business ({{count_business}})</span></a>
                                                             {% if show_block_admin %}
-                                                                <a href="/console/" class="btn-success btn btn-block btn-lg"  ><i class="icon-desktop icon-position-left"></i><span style="">Console Manager</span></a>
+                                                                <a href="/reports/" class="btn-success btn btn-block btn-lg"  ><i class="icon-desktop icon-position-left"></i><span style="">Отчет CiscoWifi</span></a>
                                                             {% endif %}
                                                         </div>
                                                         <div class ="col-md-8" id="net">
