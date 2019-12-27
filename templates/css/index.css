@@ -114,6 +114,24 @@ section#logindata {
     box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
 }
 
+@media (max-width: 991px) {
+    #printLabel {
+        display: none;
+    }
+}
+@media print {
+    @page {
+        size: auto;
+        margin: 30px;
+    }
+    #button-panel, #allMapsButton, #map, footer, .bg, .nav{
+        display: none;
+    }
+    .container {
+        margin-top: 5px;
+    }
+}
+
 
 
 
