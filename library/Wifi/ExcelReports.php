@@ -181,4 +181,24 @@ class ExcelReports
                             ->withHeader('Content-Disposition', 'attachment; filename=wifiReport.xls');
 
         }
+
+        public function getCsv ($request, $response, $args) {
+            $string = '';
+            $replace = array(',', ';');
+                    $data = $this->model->getDataPoint();
+                        foreach ($data as $key=>$item) {
+                            $string.= $item['latitude'].";".$item['longitude'].";".str_replace($replace, ' ', $item['name']).";".$item['ssid'].";".$key."\n";
+                    }
+                        echo $string;
+
+            return $response
+                    ->withHeader('Content-Description', 'File Transfer')
+                    ->withHeader('Content-Type', 'application/octet-stream')
+                    ->withHeader('Accept-Ranges', 'bytes')
+                    ->withHeader('Content-Transfer-Encoding', 'binary')
+                    ->withHeader('Expires', '0')
+                    ->withHeader('Cache-Control', 'must-revalidate')
+                    ->withHeader('Pragma', 'public')
+                    ->withHeader('Content-Disposition', 'attachment; filename=WifiPoint.csv');
+            }
 }
