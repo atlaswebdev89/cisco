@@ -65,7 +65,8 @@ class AclUser {
             'profileUser',
             'profileUserEdit',
             'profileUserPass',
-            'reports'
+            'reports',
+            'csv'
         ];
 
         //Разбираем uri запроса определяем раздел (подраздел если есть) и метод которой запросил пользователь     

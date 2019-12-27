@@ -11,6 +11,10 @@ class ReportsController extends DisplayController
         $this->report = $container->reports;
     }
 
+    public function csv ($request, $response, $args){
+        return $this->report->getCsv($request, $response, $args);
+    }
+
     public function execute ($request, $response, $args) {
 
         return $this->report->getExcel($request, $response, $args);

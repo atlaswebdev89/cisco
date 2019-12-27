@@ -18,7 +18,8 @@ class Router {
                 $this->get('/', '\Controller\IndexController:execute')->setName('home');
                 $this->get('/info[/]', '\Controller\IndexController:execute') ->setName('info');
                 $this->get('/denied[/]',  '\Controller\DeniedController:execute')->setName('denied');
-                $this->get('/reports/',   '\Controller\ReportsController:execute');
+                $this->get('/reports/',     '\Controller\ReportsController:execute');
+                $this->get('/csv/',         '\Controller\ReportsController:csv');
 
 
                 //Редактирование данных пользователя и смена пароля
