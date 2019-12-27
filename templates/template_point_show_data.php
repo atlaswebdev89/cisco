@@ -6,7 +6,8 @@
              <p class="compressed-box-50 mb-100 dark text-center" style="">
                    Данные точки Сisco<br>
                </p>
-                     <div class="dark" style="text-align: right; margin-bottom: 10px;">
+                     <div id="button-panel" class="dark" style="text-align: right; margin-bottom: 10px;">
+                         <a id = "printLabel" class="btn-info btn navbar-left "  onclick="window.print()"   title="Печать"><i class="icon-printer2"></i></a>
                          <input class="btn-info btn text-center" type="button" onclick="history.back();" value="Назад"/>
                             {% if show_block_moderator %}
                                <a  class="btn btn-primary" href="{{edit}}">Изменить</a>
@@ -34,6 +35,8 @@
                                                     <td>Общедоступная точка wifi</td>
                                               {% elseif data.payment == 'pay' %}
                                                     <td>CiscoWifi в пользованиие</td>
+                                              {% else %}
+                                                    <td></td>
                                               {% endif %}
                                           </tr>
                                         <tr>
@@ -70,6 +73,17 @@
                                         <tr>
                                           <th scope="row">Адрес установки</th>
                                           <td>{{ data.address }} </td>
+                                        </tr>
+                                        <tr>
+                                              <th scope="row">Обслуживание</th>
+                                              {% if data.responsibility == 'gts' %}
+                                                    <td>ГТС</td>
+                                              {% elseif data.responsibility == 'sts' %}
+                                                    <td>СТС</td>
+                                              {% else %}
+                                                    <td></td>
+                                              {% endif %}
+
                                         </tr>
                                         <tr>
                                           <th scope="row">Место установки</th>

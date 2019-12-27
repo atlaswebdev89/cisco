@@ -391,9 +391,9 @@ public function getRolePermisions () {
     {
         $type = "insert";
         $sql = "INSERT INTO `" . PREF . "point_data` (ip, latitude, longitude, id_address, id_business, notice, set_place, "
-            . "speed_download, speed_upload, id_ssid, type, id_model, mac, installation_date, schema_connect, customer, payment) values (:ip, :latitude, :longitude, "
+            . "speed_download, speed_upload, id_ssid, type, id_model, mac, installation_date, schema_connect, customer, payment, responsibility) values (:ip, :latitude, :longitude, "
             . ":id_address, :id_business, :notice, :set_place, "
-            . ":speed_download, :speed_upload, :id_ssid, :type, :id_model, :mac, :installation_date, :schema_connect, :customer, :payment)";
+            . ":speed_download, :speed_upload, :id_ssid, :type, :id_model, :mac, :installation_date, :schema_connect, :customer, :payment, :responsibility)";
         $data_array = array(
             'ip' => $data['ip'],
             'latitude' => $data['latitude'],
@@ -411,7 +411,8 @@ public function getRolePermisions () {
             'installation_date' => $data['installation_date'],
             'schema_connect' => $data['schema'],
             'customer' => $data['customer'],
-            'payment' => $data['payment']
+            'payment' => $data['payment'],
+            'responsibility' => $data['responsibility']
         );
         $result = $this->driver->query($sql, $type, $data_array);
         return $result;
@@ -442,7 +443,7 @@ public function getRolePermisions () {
    //Получение всех данных точки из БД по id
     public function getDataPointId($id) {
         $type = "arraydata";
-        $sql = "SELECT `".PREF."point_data`.`id`, INET_NTOA(`".PREF."point_data`.`ip`) as ip,  `".PREF."point_data`.`payment`, `".PREF."point_data`.`latitude`, `".PREF."point_data`.`longitude`,"
+        $sql = "SELECT `".PREF."point_data`.`id`, INET_NTOA(`".PREF."point_data`.`ip`) as ip,  `".PREF."point_data`.`payment`, `".PREF."point_data`.`responsibility`,`".PREF."point_data`.`latitude`, `".PREF."point_data`.`longitude`,"
             . "`".PREF."point_data`.`notice`, `".PREF."point_data`.`set_place`, `".PREF."point_data`.`schema_connect`, `".PREF."point_data`.`customer`,  "
             . "`".PREF."point_data`.`speed_download`, `".PREF."point_data`.`speed_upload`, `".PREF."point_data`.`type`, `".PREF."point_data`.`mac`, "
             . "`".PREF."point_data`.`installation_date`, `".PREF."point_address`.`address`, `".PREF."point_ssid`.`ssid`, `".PREF."points_model`.`model`, "
@@ -497,22 +498,6 @@ public function getRolePermisions () {
         return $result;
     }
 
-    //Функция получения всех точек для формирования отчета
-    public function getDataPoints () {
-        $type = "arraydata";
-        $sql = "SELECT `".PREF."point_data`.`id`, INET_NTOA(`".PREF."point_data`.`ip`) as ip, `".PREF."point_data`.`latitude`, `".PREF."point_data`.`longitude`,"
-            . "`".PREF."point_data`.`notice`, `".PREF."point_data`.`set_place`,"
-            . "`".PREF."point_data`.`speed_download`, `".PREF."point_data`.`speed_upload`, `".PREF."point_data`.`type`, `".PREF."point_data`.`mac`, "
-            . "`".PREF."point_data`.`installation_date`, `".PREF."point_address`.`address`,"
-            . "`".PREF."point_data`.`id_business`"
-            . "FROM `".PREF."point_data` "
-            ."LEFT JOIN `".PREF."point_address` ON `".PREF."point_data`.`id_address` = `".PREF."point_address`.`id` "
-            ."ORDER BY `installation_date` DESC";
-        $result =  $this->driver->query($sql, $type);
-        return $result;
-    }
-    
-   
     //Редактирование данных точки wifi в БД
     public function editdatapointBd (array $data) {
      $type = "count";
@@ -520,7 +505,7 @@ public function getRolePermisions () {
             . "`notice` = :notice, `set_place`= :set_place, `id_address` = :id_address, `id_business` = :id_business,"
             ." `speed_download` = :speed_download, `speed_upload` =:speed_upload, `id_ssid` =:id_ssid,"
             ."`type`=:type, `id_model`=:id_model, `mac`=:mac, `installation_date`= :installation_date,"
-            ."`schema_connect` =:schema_connect, `customer` =:customer"
+            ."`schema_connect` =:schema_connect, `customer` =:customer, `responsibility` =:responsibility "
             . " WHERE `".PREF."point_data`.`id`= :id";
         $data_array = array(
             'id' => $data['id'],
@@ -540,7 +525,8 @@ public function getRolePermisions () {
             'installation_date' => $data['installation_date'],
             'schema_connect' => $data['schema'],
             'customer' => $data['customer'],
-            'payment' => $data['payment']
+            'payment' => $data['payment'],
+            'responsibility' => $data['responsibility']
         );
         $result =  $this->driver->query($sql, $type, $data_array);
         return $result;
@@ -696,10 +682,27 @@ public function getRolePermisions () {
         return $result;
     }
 
-
-
-
     /*------------------------------------------------------------------------------------------------------------*/
 
-}
 
+    /*----------------------------------------------Функции для формирование Отчетов---------------------------------------------*/
+    //Функция получения всех точек для формирования отчета
+    public function getDataPoints () {
+        $type = "arraydata";
+        $sql = "SELECT `".PREF."point_data`.`id`, INET_NTOA(`".PREF."point_data`.`ip`) as ip, `".PREF."point_data`.`latitude`, `".PREF."point_data`.`longitude`,"
+            . "`".PREF."point_data`.`notice`, `".PREF."point_data`.`set_place`,"
+            . "`".PREF."point_data`.`speed_download`, `".PREF."point_data`.`speed_upload`, `".PREF."point_data`.`type`, `".PREF."point_data`.`mac`, "
+            . "`".PREF."point_data`.`installation_date`, `".PREF."point_address`.`address`,"
+            . "`".PREF."point_data`.`id_business`"
+            . "FROM `".PREF."point_data` "
+            ."LEFT JOIN `".PREF."point_address` ON `".PREF."point_data`.`id_address` = `".PREF."point_address`.`id` "
+            ."WHERE `".PREF."point_data`.`payment` !='free' AND  `".PREF."point_data`.`responsibility` !='sts' "
+            ."ORDER BY `installation_date` DESC";
+        $result =  $this->driver->query($sql, $type);
+        return $result;
+    }
+
+    /*----------------------------------------------------------------------------------------------------------------------------*/
+
+
+}

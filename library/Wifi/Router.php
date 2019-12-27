@@ -18,6 +18,7 @@ class Router {
                 $this->get('/', '\Controller\IndexController:execute')->setName('home');
                 $this->get('/info[/]', '\Controller\IndexController:execute') ->setName('info');
                 $this->get('/denied[/]',  '\Controller\DeniedController:execute')->setName('denied');
+                $this->get('/reports/',   '\Controller\ReportsController:execute');
 
 
                 //Редактирование данных пользователя и смена пароля
@@ -57,7 +58,7 @@ class Router {
          })->add('Wifi\Middleware:AuthLogin');
 
          $this->app->map(['GET', 'POST'], '/login[/]', '\Controller\LoginController:execute')->setName('login');
-         $this->app->get('/reports/',   '\Controller\ReportsController:execute');
+
 
 
             

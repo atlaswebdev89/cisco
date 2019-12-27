@@ -12,6 +12,12 @@
                         {%for point in point_data %}
 
                         <div class="form-group">
+                            <div class ="input-group col-md-12">
+                                <label for="ip">Ip точки</label>
+                                <input id = "ip" value ="{{point.ip}}" type="text" class="form-control" placeholder="ip адрес точки" name="ip"   required>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-6 my-class-padding">
                             <label>Название организации</label>
                             <select id = "form-point-add" class="form-control" name = "busines" required>
                                 <option></option>
@@ -25,14 +31,7 @@
                             </select>
                         </div>
 
-                        <div class="form-group">
-                            <div class ="input-group col-md-12">
-                                <label for="ip">Ip точки</label>
-                                <input id = "ip" value ="{{point.ip}}" type="text" class="form-control" placeholder="ip адрес точки" name="ip"   required>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
+                        <div class="form-group col-md-6 my-class-padding">
                             <label>Название сети</label>
                             <select id = "ssid-add" class="form-control" name = "ssid" required>
                                 <option></option>
@@ -46,7 +45,7 @@
                             </select>
                         </div>
 
-                        <div class="form-group">
+                        <div class="form-group col-md-6 my-class-padding">
                             <label>Тип точки</label>
                             <select class="form-control" title="Укажите тип точки" placeholder="тип точки" name = "type-point" required>
                                 <option  value = '' disabled="disabled">Тип точки</option>
@@ -60,7 +59,7 @@
                             </select>
                         </div>
 
-                        <div class="form-group">
+                        <div class="form-group col-md-6 my-class-padding">
                             <label>Оплата</label>
                             <select class="form-control" title="Укажите тип оплаты" placeholder="оплата" name = "payment" required>
                                 <option value = '' disabled="disabled">Оплата</option>
@@ -77,7 +76,7 @@
                             </select>
                         </div>
 
-                        <div class="form-group">
+                        <div class="form-group col-md-6 my-class-padding">
                             <label>Модель точки</label>
                             <select class="my-select form-control"  name = "model-point" required>
                                 <option selected="selected" value = '' disabled="disabled">Модель точки</option>
@@ -89,6 +88,13 @@
                                     {% endif %}
                                 {%endfor%}
                             </select>
+                        </div>
+
+                        <div class="form-group col-md-6 my-class-padding">
+                            <div class ="input-group col-md-12">
+                                <label for="mac_address">MAC адрес точки</label>
+                                <input type="text" class="form-control"  value ={{point.mac}} placeholder="Mac-адрес" name="mac_address" id="mac_address">
+                            </div>
                         </div>
 
                         <div class="form-group my-class-padding col-md-6">
@@ -119,17 +125,19 @@
                             </select>
                         </div>
 
-                        <div class="form-group ">
-                            <div class ="input-group col-md-12">
-                                <label for="mac_address">MAC адрес точки</label>
-                                   <input type="text" class="form-control"  value ={{point.mac}} placeholder="Mac-адрес" name="mac_address" id="mac_address">
-                            </div>
-                        </div>
 
-                        <div class="form-group">
+
+                        <div class="form-group col-md-6 my-class-padding">
                             <div class ="input-group col-md-12">
                                 <label for="date">Дата установки точки</label>
                                 <input type="date" class="form-control" placeholder="Дата установки" name="date" id="date" value ="{{point.installation_date}}" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group  col-md-6 my-class-padding">
+                            <div class ="input-group col-md-12">
+                                <label for="customer">Контакты заказчика</label>
+                                <input type="text" class="form-control" placeholder="Контакты заказчика" name="customer" id="customer" value="{{point.customer}}">
                             </div>
                         </div>
 
@@ -158,26 +166,37 @@
                             <div id="map" ></div>
                         </div>
 
-                        <div class="form-group">
+                        <div class="form-group  col-md-6 my-class-padding">
                             <div class ="input-group col-md-12">
                                 <label for="set_place">Место установки</label>
                                 <input type="text" class="form-control" placeholder="Место установки" name="set_place" id="set_place" value = "{{point.set_place}}">
                             </div>
                         </div>
-                        <div class="form-group">
+
+                        <div class="form-group col-md-6 my-class-padding">
+                            <label>Зона ответственности</label>
+                            <select class="form-control" title="Укажите зону ответственности" placeholder="Зона ответственности" name = "responsibility" required>
+                                {% if point.responsibility == 'gts' %}
+                                        <option selected="selected" value = "gts">ГТС</option>
+                                        <option value = "sts">CTC</option>
+                                {% elseif point.responsibility == 'sts' %}
+                                        <option value = "gts">ГТС</option>
+                                        <option selected="selected"  value = "sts">CTC</option>
+                                {% else %}
+                                        <option selected="selected" value = "gts">ГТС</option>
+                                        <option value = "sts">CTC</option>
+                                {% endif %}
+                            </select>
+                        </div>
+
+                        <div class="form-group  col-md-6 my-class-padding">
                             <div class ="input-group col-md-12">
                                 <label for="schema">Схема подключения</label>
                                 <textarea class="form-control" placeholder="Схема подключения" name="schema" id="schema" rows=2 >{{point.schema_connect}}</textarea>
                             </div>
                         </div>
-                        <div class="form-group">
-                            <div class ="input-group col-md-12">
-                                <label for="customer">Контакты заказчика</label>
-                                <input type="text" class="form-control" placeholder="Контакты заказчика" name="customer" id="customer" value="{{point.customer}}">
-                            </div>
-                        </div>
 
-                        <div class="form-group">
+                        <div class="form-group  col-md-6 my-class-padding">
                             <div class ="input-group col-md-12">
                                 <label for="notice">Примечание</label>
                                 <textarea class="form-control" placeholder="Примечание" name="notice" id="notice" rows=2 >{{point.notice}}</textarea>
@@ -189,8 +208,6 @@
                         </div>
                         {%endfor%}
                     </form>
-
-
             </div>
         </div>
     </div>

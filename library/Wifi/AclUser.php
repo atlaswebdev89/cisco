@@ -64,7 +64,8 @@ class AclUser {
             'denied',
             'profileUser',
             'profileUserEdit',
-            'profileUserPass'
+            'profileUserPass',
+            'reports'
         ];
 
         //Разбираем uri запроса определяем раздел (подраздел если есть) и метод которой запросил пользователь     

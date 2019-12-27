@@ -7,7 +7,7 @@ function init () {
             'fullscreenControl',
             'zoomControl'
         ],
-        behaviors:['drag']
+        behaviors:['drag', 'multiTouch']
     });
 
     var geoObjects=[];
