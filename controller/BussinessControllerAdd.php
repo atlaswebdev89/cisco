@@ -3,6 +3,7 @@
 namespace Controller;
 
 class BussinessControllerAdd extends BussinessController{
+    protected $messageError = '';
     protected $dataBus;
     public function execute ($request, $response, $args) {
         if ($request->isPost()) {
@@ -11,7 +12,7 @@ class BussinessControllerAdd extends BussinessController{
                     return $response->withRedirect('/bussiness/');
                 }else {
                     //Защита от повторной отправки данных формы
-                        $_SESSION['message_error'] = "Ошибка добавления. Попробуйте ещё раз";
+                        $_SESSION['message_error'] = $this->messageError;
                         $_SESSION['nameBusiness'] = $this->dataBus['name'];
                         $_SESSION['busDescription'] = $this->dataBus['description'];
                         $_SESSION['placemark_color'] =$this->dataBus['color'];
@@ -31,12 +32,17 @@ class BussinessControllerAdd extends BussinessController{
     
      //Получение главного блока данных точек доступа
     protected function mainBar () {
+        $messageError =             (isset($this->session['message_error']))?$this->session['message_error']:'';
+        $name =                     (isset($this->session['nameBusiness'])) ? $this->session['nameBusiness'] : '';
+        $description =              (isset($this->session['busDescription']))? $this->session['busDescription']:'';
+        $placemark_color =          (isset($this->session['placemark_color']))?$this->session['placemark_color']:'';
+
         return $this->view->fetch('template_bussiness_add.php',
             [
-                'message_error' =>$this->session ['message_error'],
-                'name' => $this->session['nameBusiness'],
-                'description' => $this->session['busDescription'],
-                'placemark_color' => $this->session['placemark_color']
+                'message_error' => $messageError,
+                'name' => $name,
+                'description' => $description,
+                'placemark_color' => $placemark_color
             ]
         );
     }
@@ -48,10 +54,16 @@ class BussinessControllerAdd extends BussinessController{
             foreach ($posts_data as &$data) {                
                 $data = $this->clear_str($data);
             }
+            //Проверка есть ли данная организация в БД
+            if($bus = $this->model->getBusines($posts_data['name'])){
+                    $this->messageError = "Такая организация есть в БД";
+                return FALSE;
+            }
             //Запрос в модель на добавление новой организации в БД
             if($idBuss = $this->model->addBus($posts_data)){
                  return $idBuss;
             }else {
+                $this->messageError = "Ошибка добавления. Попробуйте ещё раз";
                 return FALSE;
             }           
     }

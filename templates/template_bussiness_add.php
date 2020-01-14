@@ -26,7 +26,11 @@
                         <div class="form-group">
                             <div class ="input-group col-md-12">
                                 <label for="color" style="font-weight:inherit !important;">Цвет метки на карте</label>
-                                <input class="form-control jscolor {hash:true}" type="text" id="color" name="color"  value="{{placemark_color}}" placeholder="цвет метки на карте" />
+                                {% if placemark_color %}
+                                    <input class="form-control jscolor {hash:true}" type="text" id="color" name="color"  value="{{placemark_color}}" placeholder="цвет метки на карте" />
+                                {% else %}
+                                    <input class="form-control jscolor {hash:true}" type="text" id="color" name="color"  value="#36FF54" placeholder="цвет метки на карте" />
+                                {% endif %}
                             </div>
                         </div>
                         <input type="submit" name="button-add-bussiness"  value ="добавить" class="btn btn-block btn-success " id="button-add-bussiness">
