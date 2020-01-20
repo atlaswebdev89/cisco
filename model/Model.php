@@ -682,6 +682,18 @@ public function getRolePermisions () {
         return $result;
     }
 
+    public  function  getdataAddressPoint ($id) {
+            $type = "arraydata";
+                $sql = "SELECT `".PREF."point_data`.`id_address`, `".PREF."point_address`.`address`, COUNT(`".PREF."point_data`.`id`) as point FROM `".PREF."point_data`"
+                ."LEFT JOIN `".PREF."point_address` ON `".PREF."point_address`.`id` = `".PREF."point_data`.`id_address`"
+                ."WHERE `".PREF."point_data`.`id_business` =:id GROUP BY `".PREF."point_data`.`id_address` ORDER BY point DESC";
+            $data_array = array(
+                'id' => $id
+            );
+            $result =  $this->driver->query($sql, $type, $data_array);
+        return $result;
+    }
+
     /*------------------------------------------------------------------------------------------------------------*/
 
 

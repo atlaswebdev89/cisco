@@ -33,12 +33,14 @@ class Router {
 
                 //Группа маршрутов для Организаций
                 $this->group ('/bussiness', function () {
-                   $this->get('[/[page/{id}[/]]]',                          '\Controller\BussinessControllerShowAll:execute') ->setName('bussiness');
-                   $this->post('/delete[/]',                                '\Controller\BussinessControllerDelete:execute')  ->setName('bussiness_delete');
-                   $this->get('/points/show/id/{id}[/[page/{page}[/]]]',    '\Controller\BussinessControllerShowPoint:execute')->setName('bussiness_point');
-                   $this->get('/edit/id/{id}',                              '\Controller\BussinessControllerEdit:execute')    ->setName('edit_bussiness_show');
-                   $this->post('/edit[/]',                                  '\Controller\BussinessControllerEdit:edit')       ->setName('edit_bussiness');
-                   $this->map(['GET', 'POST'], '/add[/]',                   '\Controller\BussinessControllerAdd:execute')     ->setName('add_bussiness');
+                   $this->get('[/[page/{id}[/]]]',                          '\Controller\BussinessControllerShowAll:execute')   ->setName('bussiness');
+                   $this->get('/show/id/{id}',                              '\Controller\BussinessControllerShow:execute')      ->setName('bussiness_show');
+                   $this->post('/delete[/]',                                '\Controller\BussinessControllerDelete:execute')    ->setName('bussiness_delete');
+                   $this->get('/points/show/id/{id}[/[page/{page}[/]]]',    '\Controller\BussinessControllerShowPoint:execute') ->setName('bussiness_point');
+                   $this->get('/{bus}/address/show/{id}[/page/{page}[/]]',  '\Controller\BussinessControllerShowAddress:execute') ->setName('bussiness_pointAddress');
+                   $this->get('/edit/id/{id}',                              '\Controller\BussinessControllerEdit:execute')      ->setName('edit_bussiness_show');
+                   $this->post('/edit[/]',                                  '\Controller\BussinessControllerEdit:edit')         ->setName('edit_bussiness');
+                   $this->map(['GET', 'POST'], '/add[/]',                   '\Controller\BussinessControllerAdd:execute')       ->setName('add_bussiness');
                 });
 
                 //Группа маршрутов для точек доступа
