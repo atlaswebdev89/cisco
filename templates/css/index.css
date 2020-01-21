@@ -132,6 +132,16 @@ section#logindata {
     }
 }
 
+/*Стили для таблицы*/
+th {
+    text-align: center;
+}
+td a {
+    color: #3dff53 !important;
+}
+.table tr:hover {
+    background: #444454;
+}
 
 
 

@@ -17,8 +17,6 @@ class BussinessControllerShow extends BussinessController
         $this->id = $args['id'];
         $this->title .= 'AddressBussiness';
         $this->address = $this->getdataAddressPoint($this->id);
-
-
         $this->mainbar = $this->mainBar();
         parent::display($request, $response, $args);
     }
@@ -38,10 +36,4 @@ class BussinessControllerShow extends BussinessController
     protected function getdataAddressPoint ($id) {
         return $this->model->getdataAddressPoint($id);
     }
-
-    public function pointAddress ($request, $response, $args) {
-        print_r($args);
-
-    }
-
 }
